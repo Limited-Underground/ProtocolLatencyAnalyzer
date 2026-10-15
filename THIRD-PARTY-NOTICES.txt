@@ -1,0 +1,20 @@
+Protocol Latency Analyzer third-party notices
+
+The application is licensed under Apache-2.0. Third-party components retain
+their own licenses; the application license does not replace those terms.
+
+Microsoft.Data.Sqlite and Microsoft.Data.Sqlite.Core 10.0.13
+Copyright (c) .NET Foundation and Contributors
+Copyright Microsoft Corporation. All rights reserved.
+MIT license: docs/licenses/Microsoft.Data.Sqlite-MIT.txt
+
+SQLitePCLRaw.bundle_e_sqlite3, SQLitePCLRaw.core,
+SQLitePCLRaw.provider.e_sqlite3 and SQLitePCLRaw.lib.e_sqlite3 2.1.13
+Copyright 2014-2024 SourceGear, LLC
+Apache-2.0: docs/licenses/SQLitePCLRaw-Apache.txt
+Native SQLite is dedicated to the public domain by its authors:
+https://www.sqlite.org/copyright.html
+
+The self-contained Windows package includes the .NET and WPF runtime
+licenses and third-party notices under docs/licenses. See docs/DEPENDENCIES.md
+for the exact selected runtime, package inventory, and validation boundaries.

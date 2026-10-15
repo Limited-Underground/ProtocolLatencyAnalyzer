@@ -1,0 +1,43 @@
+{
+  "TimestampUtc": "2026-10-15T06:41:09.880138-04:00",
+  "Scope": "Offline synthetic checks on current host only; no interface inventory, traffic or capture. No interactive workflow or other-OS acceptance.",
+  "ArchiveSha256": "0ea44ec33b1e4a73fa526766410e3feee6b855c107c631db8f911e9971cbd160",
+  "IncludedFrameworks": [
+    {
+      "name": "Microsoft.NETCore.App",
+      "version": "10.0.13"
+    },
+    {
+      "name": "Microsoft.WindowsDesktop.App",
+      "version": "10.0.13"
+    }
+  ],
+  "Checks": [
+    {
+      "Name": "View model and WPF layout",
+      "ExitCode": 0,
+      "DurationSeconds": 1.4367731
+    },
+    {
+      "Name": "Packaged SQLite and configuration",
+      "ExitCode": 0,
+      "DurationSeconds": 1.3388544
+    },
+    {
+      "Name": "Synthetic dashboard render",
+      "ExitCode": 0,
+      "DurationSeconds": 0.9834304
+    }
+  ],
+  "Build": {
+    "Configuration": "Release",
+    "Warnings": 0,
+    "Errors": 0,
+    "OfflineStorageChecksPassed": 25
+  },
+  "Preview": "../images/dashboard-phase1.png",
+  "Limitations": [
+    "Evidence from the existing Phase 1 host validation; source publication did not rerun network or interactive tests.",
+    "Other OS qualification and owner acceptance remain pending."
+  ]
+}

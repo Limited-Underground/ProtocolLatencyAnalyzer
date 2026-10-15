@@ -1,0 +1,88 @@
+using Microsoft.Data.Sqlite;
+using ProtocolLatencyAnalyzer.Core;
+using ProtocolLatencyAnalyzer.Infrastructure;
+
+var root = Path.Combine(Path.GetFullPath(args.Length > 0 ? args[0] : ".artifacts"), "PLA-offline-tests-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(root);
+int passed = 0;
+void Check(bool condition, string name) { if (!condition) throw new Exception(name); Console.WriteLine("PASS " + name); passed++; }
+async Task Reject<T>(Func<Task> action, string name) where T : Exception
+{ try { await action(); } catch (T) { Check(true, name); return; } throw new Exception("Expected rejection: " + name); }
+async Task RejectLockedReplacement(Func<Task> action)
+{
+    try { await action(); }
+    catch (Exception error) when (error is IOException or UnauthorizedAccessException)
+    { Check(true, "failed atomic replacement surfaces"); return; }
+    throw new Exception("Expected locked-target replacement rejection.");
+}
+try
+{
+    var configuration = new ConfigurationStore(Path.Combine(root, "settings.json"));
+    Check((await configuration.LoadAsync()).SchemaVersion == 1, "missing configuration gives defaults");
+    await configuration.SaveAsync(new AnalyzerConfiguration { SelectedInterfaceId = "synthetic-interface", MaxVisibleEvents = 50 });
+    Check((await configuration.LoadAsync()).MaxVisibleEvents == 50, "configuration round trip");
+    await Reject<InvalidDataException>(() => configuration.SaveAsync(new AnalyzerConfiguration { SchemaVersion = 2 }), "future configuration rejected");
+    Check((await configuration.LoadAsync()).MaxVisibleEvents == 50, "invalid save preserves configuration");
+    using (var locked = new FileStream(Path.Combine(root, "settings.json"), FileMode.Open, FileAccess.Read, FileShare.None))
+        await RejectLockedReplacement(() => configuration.SaveAsync(new AnalyzerConfiguration { MaxVisibleEvents = 75 }));
+    Check((await configuration.LoadAsync()).MaxVisibleEvents == 50, "failed replacement preserves original configuration");
+    Check(!Directory.EnumerateFiles(root, "*.tmp").Any(), "failed replacement cleans temporary file");
+    await File.WriteAllTextAsync(Path.Combine(root, "settings.json"), "{\"SchemaVersion\":2}");
+    await Reject<InvalidDataException>(() => configuration.LoadAsync(), "future configuration read rejected");
+    var repository = new SessionRepository(root);
+    var session = new SessionDocument { Name = "Synthetic ' ; SQL text", Origin = "Simulation", SelectedInterfaceId = "synthetic-interface" };
+    session.Events.Add(new SessionEvent(DateTimeOffset.UtcNow, "Simulation", "Synthetic event; no measurement"));
+    await repository.SaveAsync(session);
+    var opened = await repository.OpenAsync(session.Id);
+    Check(opened.Name == session.Name && opened.Events.SequenceEqual(session.Events) && opened.SelectedInterfaceId == session.SelectedInterfaceId && opened.Origin == "Simulation", "SQLite parameterized round trip");
+    session.Name = "Updated"; await repository.SaveAsync(session);
+    Check((await repository.OpenAsync(session.Id)).Events.Count == 1, "save replaces instead of duplicating events");
+    using (var connection = new SqliteConnection($"Data Source={repository.GetSessionPath(session.Id)};Pooling=False"))
+    {
+        await connection.OpenAsync(); using var command = connection.CreateCommand();
+        command.CommandText = "CREATE TRIGGER reject_event BEFORE INSERT ON events BEGIN SELECT RAISE(ABORT, 'test fault'); END";
+        await command.ExecuteNonQueryAsync();
+    }
+    session.Name = "Must roll back";
+    await Reject<SqliteException>(() => repository.SaveAsync(session), "database write fault surfaces");
+    Check((await repository.OpenAsync(session.Id)).Name == "Updated" && (await repository.OpenAsync(session.Id)).Events.Count == 1, "transaction rolls back deleted metadata and events");
+    using (var connection = new SqliteConnection($"Data Source={repository.GetSessionPath(session.Id)};Pooling=False"))
+    {
+        await connection.OpenAsync(); using var command = connection.CreateCommand(); command.CommandText = "DROP TRIGGER reject_event"; await command.ExecuteNonQueryAsync();
+    }
+    using var canceled = new CancellationTokenSource(); canceled.Cancel();
+    session.Name = "Canceled write";
+    await Reject<OperationCanceledException>(() => repository.SaveAsync(session, canceled.Token), "canceled save rejected");
+    Check((await repository.OpenAsync(session.Id)).Name == "Updated", "canceled save preserves database");
+    session.Events = Enumerable.Repeat(session.Events[0], SessionDocument.MaxEvents + 1).ToList();
+    await Reject<InvalidDataException>(() => repository.SaveAsync(session), "oversize event list rejected");
+    Check((await repository.OpenAsync(session.Id)).Events.Count == 1, "oversize save preserves database");
+    using (var connection = new SqliteConnection($"Data Source={repository.GetSessionPath(session.Id)};Pooling=False"))
+    {
+        await connection.OpenAsync(); using var command = connection.CreateCommand(); command.CommandText = "PRAGMA user_version=2"; await command.ExecuteNonQueryAsync();
+    }
+    await Reject<InvalidDataException>(() => repository.OpenAsync(session.Id), "future session read rejected");
+    session.Events = []; await Reject<InvalidDataException>(() => repository.SaveAsync(session), "future session overwrite rejected");
+    using (var connection = new SqliteConnection($"Data Source={repository.GetSessionPath(session.Id)};Pooling=False"))
+    {
+        await connection.OpenAsync(); using var command = connection.CreateCommand(); command.CommandText = "PRAGMA user_version";
+        Check(Convert.ToInt32(await command.ExecuteScalarAsync()) == 2, "future schema marker preserved after rejected overwrite");
+        command.CommandText = "SELECT name FROM session";
+        Check((string?)await command.ExecuteScalarAsync() == "Updated", "future schema content preserved after rejected overwrite");
+    }
+    var blockedDirectory = Path.Combine(root, "ordinary-file"); await File.WriteAllTextAsync(blockedDirectory, "test");
+    await Reject<IOException>(() => new SessionRepository(blockedDirectory).SaveAsync(new SessionDocument()), "storage failure surfaces");
+    await Reject<FileNotFoundException>(() => repository.OpenAsync(Guid.NewGuid()), "missing session does not create database");
+    var corruptPath = Path.Combine(root, "corrupt.plasession"); await File.WriteAllTextAsync(corruptPath, "not a database");
+    await Reject<SqliteException>(() => repository.OpenFileAsync(corruptPath), "corrupted session rejected");
+    var misnamed = new SessionDocument { Name = "Original identity" }; await repository.SaveAsync(misnamed);
+    var replacement = new SessionDocument { Name = "Must not overwrite" };
+    File.Copy(repository.GetSessionPath(misnamed.Id), repository.GetSessionPath(replacement.Id));
+    await Reject<InvalidDataException>(() => repository.SaveAsync(replacement), "misnamed database overwrite rejected");
+    Check((await repository.OpenFileAsync(repository.GetSessionPath(replacement.Id))).Id == misnamed.Id, "mismatched database identity preserved");
+    Console.WriteLine($"{passed} offline checks passed. No network tests or capture performed.");
+    return 0;
+}
+catch (Exception error) { Console.Error.WriteLine(error); return 1; }
+finally { SqliteConnection.ClearAllPools(); Directory.Delete(root, recursive: true); }
+
