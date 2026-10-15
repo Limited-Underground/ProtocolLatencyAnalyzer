@@ -11,13 +11,13 @@ Phase 1 is the portable desktop foundation only. Implementation and offline host
 | JSON configuration/session metadata round trip | Configuration persistence, limits, failed replacement preservation; native save/load/cancel and export checked. | Current-host storage and interactive cases passed |
 | SQLite sessions reopen correctly | Parameterized round trip, replacement, transaction rollback, canceled/future/oversize save preservation, identity mismatch rejection. Packaged native SQLite round trip passed separately. | Offline checks passed |
 | Unknown/malformed files do not overwrite valid state | Corrupt SQLite and future versions rejected; rejected overwrites preserve prior database/configuration contents. | Tested cases passed; not an exhaustive hostile-file qualification |
-| Writable location explicit; read-only failure clear | Explicit USB data storage; native Save As read-only refusal separately from configuration/SQLite failed-write preservation checks. | Named current-host cases passed; direct USB executable startup unresolved |
+| Writable location explicit; read-only failure clear | Explicit USB data storage; native Save As read-only refusal separately from configuration/SQLite failed-write preservation checks. | Named current-host storage cases passed; complete USB package qualification pending |
 | Bounded history and dropped-entry accounting | Smoke checks limit 10, newest-entry retention, demo-aware bound and explicit discarded count. | Offline checks passed |
 | Core has no WPF/Windows dependency | net10.0 project graph and independent source review. | Source/build checks passed; Linux execution untested |
 | Logs exclude secrets and uncontrolled exception data | Fixed-message memory-only operation diagnostics; sanitized UI errors reviewed. | Source review passed |
 | Cancellation/shutdown and storage errors handled | Native canceled dialogs, invalid inputs retaining prior state, unsaved-close Cancel/discard, restart and real-window clean closure checked; busy close guard reviewed. | Named current-host checks passed |
 | Build and foundation runner pass | Release build 0 warnings/errors; 41 checks passed with default fixtures and again with explicit USB storage fixtures. | Passed |
-| Self-contained win-x64 package executes | Final checksum-verified package passed model/layout, packaged storage, render and real-window/dispatcher/closure checks under the unchanged 60-second deadline; included .NET/WPF 10.0.13. | Local extracted package passed; direct USB execution unresolved; clean machine pending |
+| Self-contained win-x64 package executes | Final package passed four local executable gates under unchanged 60-second deadlines. Same USB smoke failed with concurrent copy, passed during approved brief hold, and failed again after resumption. | Local package passed; copy-related USB contention demonstrated; all four USB gates after copy completion and clean machine pending |
 | Windows 11, Server 2019/2022/2025 qualification | Separate environment evidence still required; current-host rendering is not full product qualification. | Needs Testing |
 | Final branding/theme and owner acceptance | Provisional light styling; approved name and attribution. Actual assets and final theme unresolved. | Owner review/input pending |
 
@@ -35,7 +35,7 @@ No protocol traffic, packet capture, driver operations, privileged helper, or of
 
 ## Tracker interpretation
 
-Issue #1 is complete for the reusable core/configuration/session task scope, based on the documented source and host checks. Linux execution remains untested. Issue #2 remains open for owner visual review and final branding; the named interactive workflows passed. Issue #3 remains open for direct USB executable startup and clean-machine qualification, despite passing local portable, USB storage and native workflow checks. Issue #4 remains open for target-OS qualification. Later phases remain Todo. Phase 1 overall is not accepted or closed.
+Issue #1 is complete for the reusable core/configuration/session task scope, based on the documented source and host checks. Linux execution remains untested. Issue #2 remains open for owner visual review and final branding; the named interactive workflows passed. Issue #3 remains open for all four USB package gates after the concurrent copy finishes and for clean-machine qualification. The approved failure/pass/failure comparison demonstrates copy-related USB contention; only the USB smoke gate passed during the hold. Issue #4 remains open for target-OS qualification. Later phases remain Todo. Phase 1 overall is not accepted or closed; Phase 2 is held.
 
 ## Owner feedback follow-up
 

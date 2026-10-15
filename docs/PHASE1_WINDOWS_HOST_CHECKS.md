@@ -17,9 +17,27 @@ The final package checksum is `89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101a
 
 The prior timeout was not established as an adapter-enumeration defect: synthetic mode bypasses enumeration. Identical previously failing binaries later passed. Normal USB-hosted startup was also delayed; managed stacks sampled initial WPF layout and later an idle dispatcher, without establishing a permanent deadlock. An identical diagnostic bundle completed a full local-disk window/render/close check in 2.87 seconds but exceeded the same deadline from USB. Bundling did not resolve that USB case and was not adopted. The original package format and application dependency locks remain in use.
 
-The source/project drive was verified as USB. A fresh extraction of the exact final ZIP (same checksum above; 257 files) was verified at 2026-10-15T13:36:13.8970870Z. Its first model/layout check exceeded the unchanged 60-second deadline with no diagnostic stages emitted; recorded duration including bounded cleanup was 61.6248782 seconds, exit code unavailable, failure `ProcessTimeout`. The remaining three checks were not reached, and no process from that attempt remained. Direct executable startup from USB therefore remains unresolved and is not counted as passed. Running the portable folder locally requires no installer; actual clean-machine qualification remains pending. No disk, antivirus, network, driver or security settings were changed.
+The source/project drive was verified as USB. A fresh extraction of the exact final ZIP (same checksum above; 257 files) was verified at 2026-10-15T13:36:13.8970870Z. Its first model/layout check exceeded the unchanged 60-second deadline with no diagnostic stages emitted; recorded duration including bounded cleanup was 61.6248782 seconds, exit code unavailable, failure `ProcessTimeout`. The remaining three checks were not reached, and no process from that attempt remained. That attempt did not qualify USB execution; the later controlled investigation below records a single smoke pass during the copy hold. Running the portable folder locally requires no installer; actual clean-machine qualification remains pending. No disk, antivirus, network, driver or security settings were changed.
 
 The verifier now uses exact process arguments, drains redirected output asynchronously, saves partial failure results and fixed diagnostic stages, and supports a guarded explicit execution directory. Existing directories are preserved. Normal startup diagnostics require the explicit `PLA_TRACE_STARTUP=1` opt-in. Offline verification modes emit fixed labels without paths, addresses or interface identifiers. The new startup gate exercises a real HWND, ContentRendered, dispatcher responsiveness and closure, rather than relying solely on an offscreen layout.
+
+## USB contention investigation
+
+Read-only host checks identified an active Robocopy job writing to the same USB drive. Its creation preceded the final USB gate. Four correlated one-second samples showed USB writes of 10.4–24.4 MB/s and queue lengths of 3–5, closely tracking the copy's write rate. Six matching package files totaling 32.77 MB took 3.392/2.870 seconds to read and hash from USB versus 0.094/0.099 seconds from the local copy. Cache state was uncontrolled, and read timings include hashing. The volume reported healthy, with no matching storage warning/error events in the preceding 12 hours; these observations do not prove device health. Checked files/folders had no offline, recall, compression, encryption or reparse flags, and no Zone.Identifier stream.
+
+The owner explicitly approved briefly pausing only the identified copy for a guarded comparison. The exact final package and smoke arguments were unchanged, and the deadline remained 60 seconds:
+
+| Copy state | USB model/layout smoke result |
+|---|---|
+| Active, before pause | Timed out before any stage marker; recorded 61.625 seconds including bounded cleanup |
+| Held, after three-second settling interval | Exit 0 in 19.6706534 seconds; all smoke stages completed |
+| Resumed, reversal control | Timed out in 60.3377487 seconds; no stage markers; only 0.125 CPU seconds by the 55-second sample |
+
+The hold lasted 22.6998139 seconds, including settling. The watchdog reported successful resumption with no failure. Independent observations confirmed the same copy identity remained alive and advanced its read/write counters; 2,781,557 write bytes advanced over a 4.965-second observation. Copy load varied after resumption, so the comparison is not a constant-load benchmark.
+
+This failure/pass/failure sequence strongly demonstrates copy-related contention on the USB drive as a cause of the observed startup timeout. It does not isolate physical disk latency from filesystem filters, mapped-file loading or caching, nor establish the cause of every historical stall. No application startup fix was adopted; the diagnostic bootstrap was not built and was removed from application source, and the flat package format and dependency locks remain unchanged. There was no timeout increase, antivirus exclusion or disk/security-setting change. Only the separately approved temporary copy hold changed process state, and the copy resumed.
+
+Only the USB model/layout smoke gate passed during the hold. Packaged storage, render and real-window startup were not run in that hold, so all four USB gates are not qualified. Full USB package verification after the copy finishes remains pending. The local four-gate result, USB storage tests and 14 native workflow groups remain valid separate evidence.
 
 ## Storage and source checks
 
@@ -49,6 +67,6 @@ The native workflow candidate had the same MainWindow, XAML and infrastructure s
 
 ## Remaining qualification
 
-Direct USB executable startup, clean-machine execution, Server 2019/2022/2025, broader Windows 11 release qualification, final branding/theme and owner acceptance retain their own gates. Linux execution is future work. Local host checks do not establish overall Phase 1 acceptance or authorize Phase 2.
+Full USB package verification after the concurrent copy finishes, clean-machine execution, Server 2019/2022/2025, broader Windows 11 release qualification, final branding/theme and owner acceptance retain their own gates. Linux execution is future work. Phase 1 remains open and Phase 2 is held; the single USB smoke pass during the temporary hold does not close overall acceptance.
 
 Earlier failures and narrower results remain recorded in [the feedback history](PHASE1_FEEDBACK.md) and its historical evidence; this record adds subsequent outcomes without erasing those failures.

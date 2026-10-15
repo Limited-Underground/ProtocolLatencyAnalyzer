@@ -22,6 +22,8 @@ The test project is a console-based foundation test runner. Publish artifacts ar
 
 The intended distribution is a self-contained Windows x64 portable package using .NET/WPF 10.0.13; it should not require a separately installed .NET runtime. Normal-build and Windows-runtime package locks are separate. Actual package and operating-system validation is recorded in [Phase 1 acceptance](docs/PHASE1_ACCEPTANCE.md). An SDK build or offscreen render does not establish interactive workflow or all-OS acceptance.
 
+On the current host, a concurrent copy to the USB application drive caused startup checks to exceed 60 seconds. The same USB smoke check passed during an owner-approved brief pause and timed out again after the copy resumed. A local extracted folder passed all four package checks; USB data storage also passed separately. Full USB package qualification after the copy finishes remains pending. See [the startup investigation](docs/PHASE1_WINDOWS_HOST_CHECKS.md). No timeout increase, security exclusion or application workaround was adopted.
+
 ## Choosing an Ethernet adapter
 
 The adapter list shows connection state and places suggested choices first. Suggestions use local link status, a usable IP address and a configured gateway. Virtual-adapter labels are name/description hints, not hardware verification. Multiple matching adapters remain visible as ambiguous choices. A suggestion does not prove Internet access, active traffic, or the route to a particular destination; select the network you intend to inspect.

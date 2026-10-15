@@ -1,5 +1,5 @@
 {
-  "TimestampUtc": "2026-10-15T13:36:13.8970870Z",
+  "TimestampUtc": "2026-10-15T14:26:42.1912539Z",
   "Scope": "Synthetic model/layout/storage/render checks and a real-window startup/dispatcher check on the current host. Startup initiates read-only local interface inventory; no probes, traffic acquisition, capture or user-data writes. No interactive workflow or other-OS acceptance.",
   "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
   "ExecutionLocation": "Explicit directory",
@@ -129,7 +129,7 @@
     "SameChecksPassedWithExplicitUsbStorageRoot": 41,
     "AuditedLockedRestore": "Passed"
   },
-  "DirectUsbExecutableStartup": "Unresolved: fresh extraction of the exact final ZIP exceeded the unchanged 60-second model/layout deadline before emitting stage markers. Local portable folder passed all four gates; USB data storage checked separately.",
+  "DirectUsbExecutableStartup": "Copy-related USB drive contention demonstrated by unchanged smoke failure/pass/failure with active/briefly-held/resumed copy. Only the held smoke gate passed; all four USB package gates after copy completion remain pending.",
   "InteractiveWorkflows": {
     "TimestampUtc": "2026-10-15T13:31:35.7725579Z",
     "Method": "Native screenshot observation and input; private storage content verification",
@@ -174,14 +174,14 @@
     "NoSyntheticMetrics": true
   },
   "RemainingQualification": [
-    "Direct USB executable startup unresolved",
+    "All four USB package gates after concurrent copy completion",
     "Clean independent machine",
     "Server 2019/2022/2025",
     "Broader Windows 11 release qualification",
     "Owner visual acceptance and final branding",
     "Linux execution is future work"
   ],
-  "PhaseState": "Phase 1 remains open; Phase 2 not started. App-control approval is not owner acceptance.",
+  "PhaseState": "Phase 1 remains open; Phase 2 held. App-control approval and temporary copy-hold approval are not owner visual acceptance.",
   "Privacy": "Only allowlisted outcomes and fixed labels published; no user paths, machine names, adapter names, addresses or stable identifiers.",
   "CurrentHost": {
     "OperatingSystem": "Windows 11 Pro",
@@ -190,7 +190,7 @@
     "LocalEthernetInventoryCount": 46
   },
   "DirectUsbVerification": {
-    "TimestampUtc": "2026-10-15T13:36:13.8970870Z",
+    "TimestampUtc": "2026-10-15T13:36:13.897087Z",
     "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
     "ExtractedFileCount": 257,
     "ExecutionLocation": "Fresh explicitly chosen USB directory",
@@ -209,5 +209,91 @@
     "RemainingChecks": "Packaged SQLite/configuration, synthetic render and real-window startup checks were not reached.",
     "ProcessRemains": false,
     "Accepted": false
+  },
+  "USBStartupInvestigation": {
+    "Scope": "Owner-approved guarded active/held/resumed copy comparison; exact final USB package and smoke arguments unchanged; 60-second deadline unchanged.",
+    "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
+    "Before": {
+      "TimestampUtc": "2026-10-15T13:36:13.8970870Z",
+      "CopyState": "Active",
+      "Check": "View model and WPF layout",
+      "ExitCode": null,
+      "TimedOut": true,
+      "DurationIncludingCleanupSeconds": 61.6248782,
+      "Failure": "ProcessTimeout",
+      "Stages": []
+    },
+    "Held": {
+      "TargetStartUtc": "2026-10-15T14:22:59.5041959Z",
+      "CopyState": "Temporarily held with explicit owner approval",
+      "SettleSeconds": 3,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "TargetSeconds": 19.6706534,
+      "AllSmokeStagesCompleted": true,
+      "TotalHoldSeconds": 22.6998139,
+      "PauseUtc": "2026-10-15T14:22:56.4852711+00:00",
+      "ResumeUtc": "2026-10-15T14:23:19.1818447+00:00",
+      "WatchdogResumed": true,
+      "WatchdogFailure": null,
+      "ResumeReason": "ParentResumeRequest"
+    },
+    "IndependentResumeVerification": {
+      "TimestampUtc": "2026-10-15T14:24:52.5225653Z",
+      "SameCopyIdentityAliveBeforeAndAfter": true,
+      "ObservationSeconds": 4.9647792,
+      "ReadTransferByteDelta": 2770307,
+      "WriteTransferByteDelta": 2781557,
+      "UsbQueueSamples": [
+        2,
+        2,
+        4
+      ]
+    },
+    "Reversal": {
+      "TimestampUtc": "2026-10-15T14:26:42.1912539Z",
+      "CopyState": "Resumed; same identity and expected drive classification",
+      "ExitCode": null,
+      "TimedOut": true,
+      "DurationIncludingCleanupSeconds": 60.3377487,
+      "Outcome": "ProcessTimeout",
+      "RawReceiptFailure": null,
+      "Stages": [],
+      "CpuSecondsAt55SecondSample": 0.125
+    },
+    "SupportingReadOnlyFacts": {
+      "UsbMedia": "USB HDD",
+      "VolumeReportedHealthy": true,
+      "MatchedStorageWarningErrorEventsInPrior12Hours": 0,
+      "NoSpecialRecallCompressionEncryptionReparseFlagsOrZoneIdentifierOnCheckedItems": true,
+      "SixFileBytesPerSet": 32769736,
+      "AllSixFileUsbLocalHashesMatch": true,
+      "UsbReadAndHashSeconds": [
+        3.392059,
+        2.870299
+      ],
+      "LocalReadAndHashSeconds": [
+        0.094151,
+        0.099156
+      ],
+      "ConcurrentUsbWriteMegabytesPerSecondRange": [
+        10.4,
+        24.4
+      ],
+      "ConcurrentUsbQueueRange": [
+        3,
+        5
+      ],
+      "CopyDestinationSameUsbDriveVerified": true
+    },
+    "Conclusion": "The failure/pass/failure sequence strongly demonstrates copy-related contention on the USB drive as a cause of the observed startup timeout.",
+    "Limits": [
+      "Physical disk latency, filesystem filters, mapped-file loading and caching were not fully separated.",
+      "Cache and copy load varied; this is not a constant-load or cold-start benchmark.",
+      "The comparison does not establish the cause of every historical stall.",
+      "Only USB smoke passed during the hold; other three USB gates were not run in that hold.",
+      "Complete USB package qualification after copy completion remains pending."
+    ],
+    "AdoptedChanges": "No application startup workaround, diagnostic bootstrap, bundling change, dependency lock change, deadline increase, antivirus exclusion or disk/security-setting change. Copy hold was separately approved and the copy resumed."
   }
 }
