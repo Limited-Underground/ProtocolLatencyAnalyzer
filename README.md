@@ -22,7 +22,7 @@ The test project is a console-based foundation test runner. Publish artifacts ar
 
 The intended distribution is a self-contained Windows x64 portable package using .NET/WPF 10.0.13; it should not require a separately installed .NET runtime. Normal-build and Windows-runtime package locks are separate. Actual package and operating-system validation is recorded in [Phase 1 acceptance](docs/PHASE1_ACCEPTANCE.md). An SDK build or offscreen render does not establish interactive workflow or all-OS acceptance.
 
-On the current host, a concurrent copy to the USB application drive caused startup checks to exceed 60 seconds. The same USB smoke check passed during an owner-approved brief pause and timed out again after the copy resumed. A local extracted folder passed all four package checks; USB data storage also passed separately. Full USB package qualification after the copy finishes remains pending. See [the startup investigation](docs/PHASE1_WINDOWS_HOST_CHECKS.md). No timeout increase, security exclusion or application workaround was adopted.
+On the current host, a concurrent copy to the USB application drive caused startup checks to exceed 60 seconds. The same USB smoke check passed during an owner-approved brief pause and timed out again after the copy resumed. Once no copy process was running, a fresh extraction of the unchanged package passed all four USB checks, including real-window startup in 2.334 seconds. The local-folder checks, USB data storage and native workflows also passed. See [the startup investigation](docs/PHASE1_WINDOWS_HOST_CHECKS.md). No timeout increase, security exclusion or application workaround was adopted. Clean-machine, other-OS and owner acceptance remain pending; Phase 2 has not started.
 
 ## Choosing an Ethernet adapter
 
@@ -57,7 +57,7 @@ The preview was rendered by the packaged WPF application. No protocol traffic or
 
 ## Current Windows host validation
 
-The local-folder portable package passes four executable checks, including real-window rendering, dispatcher responsiveness and clean closure. The 41 foundation/storage checks also pass with an explicit USB data root. Direct executable startup from the current USB source drive remains unresolved; see [current host evidence](docs/PHASE1_WINDOWS_HOST_CHECKS.md).
+The local-folder and USB portable package each passed four executable checks on the current host, including real-window rendering, dispatcher responsiveness and clean closure. The USB checks passed after the concurrent copy process ended. The 41 foundation/storage checks also pass with an explicit USB data root; see [current host evidence](docs/PHASE1_WINDOWS_HOST_CHECKS.md).
 
 To verify a package from a deliberately selected new local execution folder while retaining project-local evidence:
 

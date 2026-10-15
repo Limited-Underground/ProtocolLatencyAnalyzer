@@ -37,7 +37,22 @@ The hold lasted 22.6998139 seconds, including settling. The watchdog reported su
 
 This failure/pass/failure sequence strongly demonstrates copy-related contention on the USB drive as a cause of the observed startup timeout. It does not isolate physical disk latency from filesystem filters, mapped-file loading or caching, nor establish the cause of every historical stall. No application startup fix was adopted; the diagnostic bootstrap was not built and was removed from application source, and the flat package format and dependency locks remain unchanged. There was no timeout increase, antivirus exclusion or disk/security-setting change. Only the separately approved temporary copy hold changed process state, and the copy resumed.
 
-Only the USB model/layout smoke gate passed during the hold. Packaged storage, render and real-window startup were not run in that hold, so all four USB gates are not qualified. Full USB package verification after the copy finishes remains pending. The local four-gate result, USB storage tests and 14 native workflow groups remain valid separate evidence.
+Only the USB model/layout smoke gate passed during the hold; packaged storage, render and real-window startup were not run in that hold. Full USB qualification was therefore pending at that stage. The subsequent post-copy run below completed all four gates. The local four-gate result, USB storage tests and 14 native workflow groups remain valid separate evidence.
+
+## Post-copy USB verification
+
+At 2026-10-15T17:27:48.5143182Z, no Robocopy processes were present; two USB queue samples were zero. A fresh extraction of the exact unchanged ZIP above then passed all four gates directly from the USB drive at 2026-10-15T17:28:48.2330088Z:
+
+| USB executable check | Seconds | Outcome |
+|---|---:|---|
+| Model and WPF layout | 4.5486286 | Exit 0 |
+| Packaged SQLite and configuration | 1.4430404 | Exit 0 |
+| Synthetic WPF render | 2.3118562 | Exit 0 |
+| Real window, rendering, dispatcher idle and clean closure | 2.3335344 | Exit 0 |
+
+All four retained the 60-second process deadline. Source HEAD at verification was `ad3af21`; the application and immutable package were unchanged. No new copy hold, application fix, timeout increase or settings change was required. The earlier 90-second watchdog limit bounded only the separately approved copy hold; it never changed the application check deadline.
+
+Post-test observations at 2026-10-15T17:29:39.6675829Z again found no Robocopy processes and USB queues of zero in two samples. These are bounded before/after observations, not a claim about copy/migration success or continuous disk inactivity. The four USB executable gates are passed for this Windows host; clean-machine, other-OS and owner acceptance remain separate.
 
 ## Storage and source checks
 
@@ -67,6 +82,6 @@ The native workflow candidate had the same MainWindow, XAML and infrastructure s
 
 ## Remaining qualification
 
-Full USB package verification after the concurrent copy finishes, clean-machine execution, Server 2019/2022/2025, broader Windows 11 release qualification, final branding/theme and owner acceptance retain their own gates. Linux execution is future work. Phase 1 remains open and Phase 2 is held; the single USB smoke pass during the temporary hold does not close overall acceptance.
+Clean-machine execution, Server 2019/2022/2025, broader Windows 11 release qualification, final branding/theme and owner acceptance retain their own gates. Linux execution is future work. Current-host local and USB package gates and the named native workflows passed. Phase 1 remains open and Phase 2 has not started; these results do not close overall acceptance.
 
 Earlier failures and narrower results remain recorded in [the feedback history](PHASE1_FEEDBACK.md) and its historical evidence; this record adds subsequent outcomes without erasing those failures.

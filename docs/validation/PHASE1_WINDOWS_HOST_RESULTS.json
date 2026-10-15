@@ -1,5 +1,5 @@
 {
-  "TimestampUtc": "2026-10-15T14:26:42.1912539Z",
+  "TimestampUtc": "2026-10-15T17:29:39.6675829+00:00",
   "Scope": "Synthetic model/layout/storage/render checks and a real-window startup/dispatcher check on the current host. Startup initiates read-only local interface inventory; no probes, traffic acquisition, capture or user-data writes. No interactive workflow or other-OS acceptance.",
   "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
   "ExecutionLocation": "Explicit directory",
@@ -129,9 +129,9 @@
     "SameChecksPassedWithExplicitUsbStorageRoot": 41,
     "AuditedLockedRestore": "Passed"
   },
-  "DirectUsbExecutableStartup": "Copy-related USB drive contention demonstrated by unchanged smoke failure/pass/failure with active/briefly-held/resumed copy. Only the held smoke gate passed; all four USB package gates after copy completion remain pending.",
+  "DirectUsbExecutableStartup": "Passed all four executable gates on the current Windows host after no Robocopy processes were present; exact immutable package unchanged. Historical copy-contention failures retained below.",
   "InteractiveWorkflows": {
-    "TimestampUtc": "2026-10-15T13:31:35.7725579Z",
+    "TimestampUtc": "2026-10-15T13:31:35.7725579+00:00",
     "Method": "Native screenshot observation and input; private storage content verification",
     "PassedGroupCount": 14,
     "Passed": [
@@ -154,9 +154,9 @@
     "FinalCandidateRelationship": "MainWindow, XAML and infrastructure unchanged; subsequent application change only gates normal startup tracing behind explicit opt-in. Final candidate independently passed all four executable gates and normal reopen observation.",
     "ReadOnlyLayer": "Windows Save As refused the read-only fixture before application handler. Separate 41-check runner verified store failure and byte/state preservation."
   },
-  "PackageVerificationTimestampUtc": "2026-10-15T13:22:23.9848353Z",
+  "PackageVerificationTimestampUtc": "2026-10-15T13:22:23.9848353+00:00",
   "FinalNormalReopen": {
-    "TimestampUtc": "2026-10-15T13:33:01.2233959Z",
+    "TimestampUtc": "2026-10-15T13:33:01.2233959+00:00",
     "WindowTitleAppearedSeconds": 2.569,
     "AnalyzerWindowTitleObserved": true,
     "LauncherMediumIntegrityObserved": true,
@@ -164,7 +164,7 @@
     "Limitation": "Title observation complements the separate ContentRendered/dispatcher/closure gate; it alone does not establish responsiveness or owner acceptance."
   },
   "PrivateContentVerification": {
-    "TimestampUtc": "2026-10-15T13:30:58.302745Z",
+    "TimestampUtc": "2026-10-15T13:30:58.3027450+00:00",
     "ConfigurationSchemaVersion": 1,
     "ConfigurationLimit": 10,
     "ConfigurationAndExportSelectedIdsPresentAndMatching": true,
@@ -174,14 +174,13 @@
     "NoSyntheticMetrics": true
   },
   "RemainingQualification": [
-    "All four USB package gates after concurrent copy completion",
     "Clean independent machine",
     "Server 2019/2022/2025",
     "Broader Windows 11 release qualification",
     "Owner visual acceptance and final branding",
     "Linux execution is future work"
   ],
-  "PhaseState": "Phase 1 remains open; Phase 2 held. App-control approval and temporary copy-hold approval are not owner visual acceptance.",
+  "PhaseState": "Phase 1 remains open; Phase 2 has not started. Current-host USB verification passed; clean-machine, other-OS and owner acceptance remain separate.",
   "Privacy": "Only allowlisted outcomes and fixed labels published; no user paths, machine names, adapter names, addresses or stable identifiers.",
   "CurrentHost": {
     "OperatingSystem": "Windows 11 Pro",
@@ -190,7 +189,7 @@
     "LocalEthernetInventoryCount": 46
   },
   "DirectUsbVerification": {
-    "TimestampUtc": "2026-10-15T13:36:13.897087Z",
+    "TimestampUtc": "2026-10-15T13:36:13.8970870+00:00",
     "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
     "ExtractedFileCount": 257,
     "ExecutionLocation": "Fresh explicitly chosen USB directory",
@@ -208,13 +207,14 @@
     ],
     "RemainingChecks": "Packaged SQLite/configuration, synthetic render and real-window startup checks were not reached.",
     "ProcessRemains": false,
-    "Accepted": false
+    "Accepted": false,
+    "HistoricalAttempt": true
   },
   "USBStartupInvestigation": {
     "Scope": "Owner-approved guarded active/held/resumed copy comparison; exact final USB package and smoke arguments unchanged; 60-second deadline unchanged.",
     "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
     "Before": {
-      "TimestampUtc": "2026-10-15T13:36:13.8970870Z",
+      "TimestampUtc": "2026-10-15T13:36:13.8970870+00:00",
       "CopyState": "Active",
       "Check": "View model and WPF layout",
       "ExitCode": null,
@@ -224,7 +224,7 @@
       "Stages": []
     },
     "Held": {
-      "TargetStartUtc": "2026-10-15T14:22:59.5041959Z",
+      "TargetStartUtc": "2026-10-15T14:22:59.5041959+00:00",
       "CopyState": "Temporarily held with explicit owner approval",
       "SettleSeconds": 3,
       "ExitCode": 0,
@@ -239,7 +239,7 @@
       "ResumeReason": "ParentResumeRequest"
     },
     "IndependentResumeVerification": {
-      "TimestampUtc": "2026-10-15T14:24:52.5225653Z",
+      "TimestampUtc": "2026-10-15T14:24:52.5225653+00:00",
       "SameCopyIdentityAliveBeforeAndAfter": true,
       "ObservationSeconds": 4.9647792,
       "ReadTransferByteDelta": 2770307,
@@ -251,7 +251,7 @@
       ]
     },
     "Reversal": {
-      "TimestampUtc": "2026-10-15T14:26:42.1912539Z",
+      "TimestampUtc": "2026-10-15T14:26:42.1912539+00:00",
       "CopyState": "Resumed; same identity and expected drive classification",
       "ExitCode": null,
       "TimedOut": true,
@@ -292,8 +292,151 @@
       "Cache and copy load varied; this is not a constant-load or cold-start benchmark.",
       "The comparison does not establish the cause of every historical stall.",
       "Only USB smoke passed during the hold; other three USB gates were not run in that hold.",
-      "Complete USB package qualification after copy completion remains pending."
+      "Full USB verification was pending at the comparison stage; the subsequent PostCopyUsbVerification passed all four gates."
     ],
     "AdoptedChanges": "No application startup workaround, diagnostic bootstrap, bundling change, dependency lock change, deadline increase, antivirus exclusion or disk/security-setting change. Copy hold was separately approved and the copy resumed."
+  },
+  "PostCopyUsbVerification": {
+    "TimestampUtc": "2026-10-15T17:28:48.2330088+00:00",
+    "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
+    "ExecutionLocation": "Fresh extraction on current USB drive",
+    "SourceHeadAtVerification": "ad3af21",
+    "ApplicationAndPackageUnchanged": true,
+    "DeadlineSecondsPerProcess": 60,
+    "Checks": [
+      {
+        "Name": "View model and WPF layout",
+        "ExitCode": 0,
+        "DurationSeconds": 4.5486286,
+        "TimedOut": false,
+        "Failure": null,
+        "Stages": [
+          "app-constructor",
+          "entry",
+          "model-checks-begin",
+          "model-demo-on-begin",
+          "model-demo-on-end",
+          "model-demo-off-begin",
+          "model-demo-off-end",
+          "model-demo-on-begin",
+          "model-demo-on-end",
+          "model-demo-off-begin",
+          "model-demo-off-end",
+          "model-checks-end",
+          "window-constructor-begin",
+          "window-constructor-end",
+          "window-demo-off-begin",
+          "window-demo-off-end",
+          "measure-begin",
+          "measure-end",
+          "arrange-begin",
+          "arrange-end",
+          "update-layout-begin",
+          "update-layout-end",
+          "window-demo-on-begin",
+          "window-demo-on-end",
+          "update-layout-begin",
+          "update-layout-end",
+          "window-constructor-begin",
+          "window-constructor-end",
+          "window-demo-off-begin",
+          "window-demo-off-end",
+          "measure-begin",
+          "measure-end",
+          "arrange-begin",
+          "arrange-end",
+          "update-layout-begin",
+          "update-layout-end",
+          "window-demo-on-begin",
+          "window-demo-on-end",
+          "update-layout-begin",
+          "update-layout-end",
+          "shutdown-requested"
+        ]
+      },
+      {
+        "Name": "Packaged SQLite and configuration",
+        "ExitCode": 0,
+        "DurationSeconds": 1.4430404,
+        "TimedOut": false,
+        "Failure": null,
+        "Stages": [
+          "app-constructor",
+          "entry",
+          "storage-checks-begin",
+          "storage-checks-end",
+          "shutdown-requested"
+        ]
+      },
+      {
+        "Name": "Synthetic dashboard render",
+        "ExitCode": 0,
+        "DurationSeconds": 2.3118562,
+        "TimedOut": false,
+        "Failure": null,
+        "Stages": [
+          "app-constructor",
+          "entry",
+          "window-constructor-begin",
+          "window-constructor-end",
+          "measure-begin",
+          "measure-end",
+          "arrange-begin",
+          "arrange-end",
+          "update-layout-begin",
+          "update-layout-end",
+          "render-begin",
+          "render-end",
+          "shutdown-requested"
+        ]
+      },
+      {
+        "Name": "Real window startup and dispatcher responsiveness",
+        "ExitCode": 0,
+        "DurationSeconds": 2.3335344,
+        "TimedOut": false,
+        "Failure": null,
+        "Stages": [
+          "app-constructor",
+          "entry",
+          "normal-window-constructor-begin",
+          "normal-window-constructor-end",
+          "normal-window-show-begin",
+          "normal-window-show-end",
+          "normal-window-content-rendered",
+          "normal-window-application-idle",
+          "normal-window-close-begin",
+          "normal-window-close-end",
+          "shutdown-requested"
+        ]
+      }
+    ],
+    "AllFourExecutableGatesPassed": true,
+    "PreCheckObservation": {
+      "TimestampUtc": "2026-10-15T17:27:48.5143182+00:00",
+      "RobocopyProcessCount": 0,
+      "UnclassifiedCopyCount": 0,
+      "UsbQueueSamples": [
+        0,
+        0
+      ]
+    },
+    "PostCheckObservation": {
+      "TimestampUtc": "2026-10-15T17:29:39.6675829+00:00",
+      "RobocopyProcessCount": 0,
+      "UsbQueueSamples": [
+        0,
+        0
+      ],
+      "UsbWriteBytesPerSecond": [
+        207249.75303670357,
+        438213.31961822795
+      ]
+    },
+    "NoNewPauseOrApplicationLaunchWorkaround": true,
+    "HistoricalCopyWatchdogSeconds": 90,
+    "HistoricalWatchdogScope": "Only the previously approved temporary copy hold; application gates always retained 60 seconds.",
+    "Acceptance": "Current-host USB executable qualification only; no clean-machine, broader Windows release, other-OS, branding or owner acceptance inferred.",
+    "CopyResultLimitation": "No Robocopy process observed before/after; copy or migration success and continuous idle time are not established."
   }
 }
