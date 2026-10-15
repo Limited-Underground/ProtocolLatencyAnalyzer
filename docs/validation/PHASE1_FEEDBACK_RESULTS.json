@@ -1,0 +1,61 @@
+{
+  "TimestampUtc": "2026-10-15T11:58:22.1527734+00:00",
+  "Scope": "Current-host source/build checks and named development-build GUI checks; portable acceptance unresolved.",
+  "Build": {
+    "Configuration": "Release",
+    "Warnings": 0,
+    "Errors": 0,
+    "OfflineChecksPassed": 36,
+    "AuditedLockedRestore": "Succeeded with NuGetAudit=true"
+  },
+  "CurrentPortableCandidate": {
+    "ArchiveSha256": "db01899ba76140802c4d88bae9e6347db4675b1bcc68814719092493af569f8c",
+    "Runtime": "Self-contained .NET/WPF 10.0.13",
+    "Status": "Not accepted",
+    "FailedGate": "View model and WPF layout --smoke-check exceeded unchanged 60-second timeout",
+    "DiagnosticRetry": "Also timed out at 60 seconds",
+    "RemainingModes": "Not reached for this candidate",
+    "CleanRebuild": "Isolated Rebuild publish also exceeded unchanged 60-second smoke deadline"
+  },
+  "PriorSuccessfulCandidate": {
+    "ArchiveSha256": "cf28d969af05b059bed03b3ee5b2d7a2b02856e1993270a251d41885fba3dec4",
+    "Checks": [
+      {
+        "Name": "View model and WPF layout",
+        "ExitCode": 0,
+        "DurationSeconds": 1.3541242
+      },
+      {
+        "Name": "Packaged SQLite and configuration",
+        "ExitCode": 0,
+        "DurationSeconds": 2.0399914
+      },
+      {
+        "Name": "Synthetic dashboard render",
+        "ExitCode": 0,
+        "DurationSeconds": 1.2212525
+      }
+    ],
+    "Scope": "Earlier compact-menu candidate, before shortcut and asynchronous-inventory correction; historical result only"
+  },
+  "CurrentHost": {
+    "OperatingSystem": "Windows 11 Pro",
+    "Version": "10.0.26200",
+    "Architecture": "x64",
+    "ActualEthernetInventoryCount": 46,
+    "GuiPassed": [
+      "Normal development-build startup",
+      "File menu visible and usable",
+      "Ctrl+N/O/S/E from focused session-name field",
+      "Canceled Open/Save/Export dialogs preserve session"
+    ]
+  },
+  "RemainingAcceptance": [
+    "Other dialog/persistence/error workflows unless separately recorded",
+    "Portable-package startup gate",
+    "USB and clean machine",
+    "Server 2019/2022/2025",
+    "Owner visual acceptance"
+  ],
+  "Privacy": "No actual adapter names, addresses, identifiers or user paths are published."
+}

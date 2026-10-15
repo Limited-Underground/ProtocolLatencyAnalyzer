@@ -21,5 +21,6 @@ Direct owner instructions supersede earlier proposals and queued-state text in t
 | D-015 | Separate GitHub repository and Project | Decided under separate owner setup authorization; public Limited-Underground/ProtocolLatencyAnalyzer and private organization Project #2 created; source publication remains separate |
 | D-016 | macOS | No current commitment |
 | D-017 | Publish Phase 1 source and reconcile Project completion/testing | Explicitly authorized by owner on October 15, 2026; source-only push, no release/website or elevated capability claim |
+| D-018 | Clear adapter guidance and File menu | Owner feedback during Windows dashboard review; implement within Phase 1, retaining explicit selection and qualified connection/routing hints |
 
 Phase 1 does not authorize network/capture tests, driver installation, device changes, publication, or neighboring-project changes. Linux reuse is a design objective, not a claim that this Windows shell runs on Linux.

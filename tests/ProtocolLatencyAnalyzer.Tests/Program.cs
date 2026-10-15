@@ -17,6 +17,27 @@ async Task RejectLockedReplacement(Func<Task> action)
 }
 try
 {
+    EthernetInterfaceInfo Adapter(string id, string status = "Up", string ip = "192.0.2.10", bool gateway = true, bool virtualHint = false)
+        => new(id, id, status, 1_000_000_000, [ip]) { HasGateway = gateway, IsLikelyVirtual = virtualHint };
+    var adapterChoices = EthernetInterfaceProvider.RankCandidates([
+        Adapter("virtual", virtualHint: true), Adapter("down", status: "Down"),
+        Adapter("lan", gateway: false), Adapter("uplink"), Adapter("apipa", ip: "169.254.2.3"),
+        Adapter("ipv6-local", ip: "fe80::1"), Adapter("unspecified", ip: "0.0.0.0")]);
+    Check(adapterChoices.First().Id == "uplink" && adapterChoices.Count(a => a.IsRecommended) == 1, "connected gateway candidate ranks first without auto selection");
+    Check(!adapterChoices.Single(a => a.Id == "down").IsRecommended && adapterChoices.Single(a => a.Id == "down").ConnectionSummary == "Disconnected", "disconnected adapter never suggested despite gateway");
+    Check(!adapterChoices.Single(a => a.Id == "lan").IsRecommended && adapterChoices.Single(a => a.Id == "lan").RecommendationReason.Contains("local network"), "connected LAN without gateway remains available");
+    Check(adapterChoices.Where(a => a.Id is "apipa" or "ipv6-local" or "unspecified").All(a => !a.IsRecommended), "link-local and unspecified addresses do not qualify as uplinks");
+    Check(!adapterChoices.Single(a => a.Id == "virtual").IsRecommended && adapterChoices.Single(a => a.Id == "uplink").AdapterKindSummary.Contains("unverified"), "virtual hint preference never proves physical hardware");
+    var tied = EthernetInterfaceProvider.RankCandidates([Adapter("zeta"), Adapter("alpha")]);
+    Check(tied.All(a => a.IsRecommended && a.RecommendationReason.Contains("Multiple adapters")) && tied.First().Id == "alpha", "equal gateway candidates show ambiguity with stable alphabetical order");
+    var reordered = EthernetInterfaceProvider.RankCandidates([Adapter("alpha"), Adapter("zeta")]);
+    Check(tied.Select(a => (a.Id, a.IsRecommended, a.RecommendationReason))
+        .SequenceEqual(reordered.Select(a => (a.Id, a.IsRecommended, a.RecommendationReason))), "recommendation independent of enumeration order");
+    var onlyVirtual = EthernetInterfaceProvider.RankCandidates([Adapter("virtual", virtualHint: true)]).Single();
+    Check(onlyVirtual.IsRecommended && onlyVirtual.RecommendationReason.Contains("virtual") && onlyVirtual.RecommendationReason.Contains("destination route is unverified"), "only virtual candidate explains evidence and routing limit");
+    Check(EthernetInterfaceProvider.RankCandidates([Adapter("ipv6", ip: "2001:db8::10")]).Single().IsRecommended, "IPv6 global address and gateway can qualify");
+    Check(EthernetInterfaceProvider.HasVirtualHint("vEthernet", "Hyper-V adapter") && !EthernetInterfaceProvider.HasVirtualHint("Ethernet", "Generic adapter"), "virtual classification uses explicit name hints");
+    Check(!EthernetInterfaceProvider.RankCandidates([Adapter("local", gateway: false)]).Any(a => a.IsRecommended) && EthernetInterfaceProvider.RankCandidates([]).Count == 0, "no suitable candidate and empty inventory produce no suggestion");
     var configuration = new ConfigurationStore(Path.Combine(root, "settings.json"));
     Check((await configuration.LoadAsync()).SchemaVersion == 1, "missing configuration gives defaults");
     await configuration.SaveAsync(new AnalyzerConfiguration { SelectedInterfaceId = "synthetic-interface", MaxVisibleEvents = 50 });

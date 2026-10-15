@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace ProtocolLatencyAnalyzer.Desktop;
 
-public sealed record InterfaceChoice(string Id, string DisplayName, string Details);
+public sealed record InterfaceChoice(string Id, string DisplayName, string Details, string RecommendationReason = "");
 public sealed record ProtocolRow(string Name, string State, string Timing);
 public sealed record EventRow(string Context, string Detail);
 
@@ -18,6 +18,8 @@ public sealed class DashboardViewModel : INotifyPropertyChanged
     private string subtitle = "Network and protocol diagnostics";
     private readonly Queue<EventRow> diagnostics = new();
     private int maxVisibleEvents = 1000;
+    private string interfaceGuidance = "Refresh to list local Ethernet adapters. Select the adapter for the network you want to inspect.";
+    public string InterfaceGuidance { get => interfaceGuidance; set { interfaceGuidance = value; Notify(); } }
     public long DroppedDiagnosticCount { get; private set; }
     public int MaxVisibleEvents { get => maxVisibleEvents; set { maxVisibleEvents = Math.Clamp(value, 10, 10_000); while (diagnostics.Count > maxVisibleEvents) { diagnostics.Dequeue(); DroppedDiagnosticCount++; } RefreshPreview(); Notify(nameof(DroppedDiagnosticCount)); Notify(nameof(Status)); } }
     public ObservableCollection<InterfaceChoice> Interfaces { get; } = [];

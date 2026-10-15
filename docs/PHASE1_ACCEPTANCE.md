@@ -4,11 +4,11 @@ Phase 1 is the portable desktop foundation only. Implementation and offline host
 
 | Criterion | Evidence required | Status |
 |---|---|---|
-| WPF shell preserves dense approved layout and identity | Actual WPF RenderTargetBitmap at 1536x1024 visually inspected; all panels visible after table sizing correction. Offline layout assertions at 1280x800 and 1536x1024. | Host checks passed; owner/interactive review pending |
+| WPF shell preserves dense approved layout and identity | Actual WPF RenderTargetBitmap at 1536x1024 visually inspected; all panels visible after table sizing correction. Offline layout assertions at 1280x800 and 1536x1024. | Host checks passed; File menu/keyboard and normal startup checked; owner review pending |
 | Synthetic versus unavailable/live data is explicit | Empty initial state, opt-in demo, unavailable protocol rows, synthetic adapter and banner assertions. | Host checks passed |
-| Ethernet inventory and stable selection | Read-only implementation and identifier persistence reviewed; verification modes intentionally bypass real adapter enumeration. | Interactive adapter/reorder/removal checks pending |
+| Ethernet inventory and stable selection | Read-only implementation and identifier persistence reviewed; verification modes intentionally bypass real adapter enumeration. | Normal inventory of 46 adapters checked; selection/reorder/removal checks tracked in follow-up |
 | No interface-routing or capture guarantee implied | UI/capability text and independent source review. | Source review passed |
-| JSON configuration/session metadata round trip | Actual configuration persistence, limit validation, failed replacement preservation. Explicit configuration file dialogs in UI. | Offline checks passed; dialog workflow pending |
+| JSON configuration/session metadata round trip | Actual configuration persistence, limit validation, failed replacement preservation. Explicit configuration file dialogs in UI. | Offline checks passed; canceled dialogs checked; full dialog workflow tracked in follow-up |
 | SQLite sessions reopen correctly | Parameterized round trip, replacement, transaction rollback, canceled/future/oversize save preservation, identity mismatch rejection. Packaged native SQLite round trip passed separately. | Offline checks passed |
 | Unknown/malformed files do not overwrite valid state | Corrupt SQLite and future versions rejected; rejected overwrites preserve prior database/configuration contents. | Tested cases passed; not an exhaustive hostile-file qualification |
 | Writable location explicit; read-only failure clear | Source review, storage failure and locked-target tests; no implicit persistence directory. | Host checks passed; interactive read-only/USB cases pending |
@@ -16,14 +16,14 @@ Phase 1 is the portable desktop foundation only. Implementation and offline host
 | Core has no WPF/Windows dependency | net10.0 project graph and independent source review. | Source/build checks passed; Linux execution untested |
 | Logs exclude secrets and uncontrolled exception data | Fixed-message memory-only operation diagnostics; sanitized UI errors reviewed. | Source review passed |
 | Cancellation/shutdown and storage errors handled | Canceled save preserves state; offscreen process shutdown succeeds; busy close guard reviewed. | Host/source checks passed; interactive close/error workflow pending |
-| Build and foundation runner pass | scripts/Test.ps1: Release build 0 warnings/errors; 25 offline checks passed. | Passed |
-| Self-contained win-x64 package executes | Extracted ZIP: --smoke-check, --verify-storage, --render-preview all exit 0; included .NET/WPF 10.0.13; no SDK-based launch. | Offline current-host checks passed |
+| Build and foundation runner pass | scripts/Test.ps1: Release build 0 warnings/errors; 36 offline checks passed after the adapter-guidance follow-up. | Passed |
+| Self-contained win-x64 package executes | Extracted ZIP: --smoke-check, --verify-storage, --render-preview all exit 0; included .NET/WPF 10.0.13; no SDK-based launch. | Earlier package passed; revised portable startup gate unresolved; see follow-up |
 | Windows 11, Server 2019/2022/2025 qualification | Separate environment evidence still required; current-host rendering is not full product qualification. | Needs Testing |
 | Final branding/theme and owner acceptance | Provisional light styling; approved name and attribution. Actual assets and final theme unresolved. | Owner review/input pending |
 
 ## Evidence and reproduction
 
-- `scripts/Test.ps1` performs locked normal restore, Release build, and 25 storage/model checks.
+- `scripts/Test.ps1` performs locked normal restore, Release build, and 36 storage/model/adapter checks.
 - `scripts/Publish.ps1 -OutputName win-x64-review1` produced a self-contained runtime-version-pinned ZIP. All normal and RID-specific lockfiles are retained.
 - A subsequent `dotnet restore ProtocolLatencyAnalyzer.sln --locked-mode` succeeded, establishing that publish does not invalidate normal-build locks.
 - `scripts/Verify-Package.ps1 -OutputName win-x64-review1` checked the ZIP hash, extracted a fresh copy, and ran all three offline validation modes. Each exited 0. Detailed results and synthetic PNG are beneath `.artifacts/validation/win-x64-review1`.
@@ -36,3 +36,10 @@ No protocol traffic, packet capture, driver operations, privileged helper, or of
 ## Tracker interpretation
 
 Issue #1 is complete for the reusable core/configuration/session task scope, based on the documented source and host checks. Linux execution remains untested. Issue #2 remains open for dashboard/interactive/owner review; issue #3 remains open for interactive read-only/USB, dialog and close/error workflow checks; issue #4 remains open for target-OS qualification. Later phases remain Todo. Phase 1 overall is not accepted or closed.
+
+## Owner feedback follow-up
+
+The dashboard now shows connection state and qualified adapter suggestions, with full details collapsed by default. File commands moved into a File menu; configuration is under Tools > Settings. See [follow-up evidence](PHASE1_FEEDBACK.md) and [sanitized package results](validation/PHASE1_FEEDBACK_RESULTS.json). These changes do not establish owner acceptance or another operating system's qualification.
+
+
+

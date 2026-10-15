@@ -22,6 +22,12 @@ The test project is a console-based foundation test runner. Publish artifacts ar
 
 The intended distribution is a self-contained Windows x64 portable package using .NET/WPF 10.0.13; it should not require a separately installed .NET runtime. Normal-build and Windows-runtime package locks are separate. Actual package and operating-system validation is recorded in [Phase 1 acceptance](docs/PHASE1_ACCEPTANCE.md). An SDK build or offscreen render does not establish interactive workflow or all-OS acceptance.
 
+## Choosing an Ethernet adapter
+
+The adapter list shows connection state and places suggested choices first. Suggestions use local link status, a usable IP address and a configured gateway. Virtual-adapter labels are name/description hints, not hardware verification. Multiple matching adapters remain visible as ambiguous choices. A suggestion does not prove Internet access, active traffic, or the route to a particular destination; select the network you intend to inspect.
+
+Session commands are under **File**: New (Ctrl+N), Open (Ctrl+O), Save (Ctrl+S), Export metadata (Ctrl+E), and Exit. Configuration is under **Tools > Settings**. Selecting an adapter or changing a session does not start testing or capture.
+
 ## Data and privacy
 
 Choose a writable data location explicitly when saving a session. Configuration files are explicitly saved/loaded; no configuration is silently loaded on startup. Diagnostics are fixed-message, bounded, memory-only operation records. Session metadata may contain interface identifiers; protect saved files and deliberate exports appropriately. Storage failures produce a clear error rather than a silent relocation. No capture, protocol traffic, automatic telemetry, or cloud upload is part of Phase 1. Do not save credentials or private captures into this source tree.

@@ -39,4 +39,15 @@ public sealed class AnalyzerConfiguration
     }
 }
 
-public sealed record EthernetInterfaceInfo(string Id, string Name, string OperationalStatus, long SpeedBitsPerSecond, IReadOnlyList<string> Addresses);
+public sealed record EthernetInterfaceInfo(string Id, string Name, string OperationalStatus, long SpeedBitsPerSecond, IReadOnlyList<string> Addresses)
+{
+    public string Description { get; init; } = "";
+    public bool HasGateway { get; init; }
+    public bool IsLikelyVirtual { get; init; }
+    public string? InventoryWarning { get; init; }
+    public bool IsRecommended { get; init; }
+    public string RecommendationReason { get; init; } = "No recommendation available.";
+    public string ConnectionSummary => OperationalStatus == "Up" ? "Connected" : OperationalStatus == "Down" ? "Disconnected" : OperationalStatus;
+    public string AdapterKindSummary => IsLikelyVirtual ? "Likely virtual (name/description hint)" : "Physical/virtual type unverified";
+    public string SelectionSummary => $"{Name} — {ConnectionSummary}{(IsRecommended ? " — Suggested" : "")}";
+}
