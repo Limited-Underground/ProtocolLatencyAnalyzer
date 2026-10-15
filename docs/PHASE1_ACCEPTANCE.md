@@ -6,28 +6,28 @@ Phase 1 is the portable desktop foundation only. Implementation and offline host
 |---|---|---|
 | WPF shell preserves dense approved layout and identity | Actual WPF RenderTargetBitmap at 1536x1024 visually inspected; all panels visible after table sizing correction. Offline layout assertions at 1280x800 and 1536x1024. | Host checks passed; File menu/keyboard and normal startup checked; owner review pending |
 | Synthetic versus unavailable/live data is explicit | Empty initial state, opt-in demo, unavailable protocol rows, synthetic adapter and banner assertions. | Host checks passed |
-| Ethernet inventory and stable selection | Read-only implementation and identifier persistence reviewed; verification modes intentionally bypass real adapter enumeration. | Normal inventory of 46 adapters checked; selection/reorder/removal checks tracked in follow-up |
+| Ethernet inventory and stable selection | Read-only inventory and stable identifiers; explicit selection, refresh, session/configuration restoration and missing-adapter cases checked. | Current-host cases passed; no physical adapter reconfiguration/removal performed |
 | No interface-routing or capture guarantee implied | UI/capability text and independent source review. | Source review passed |
-| JSON configuration/session metadata round trip | Actual configuration persistence, limit validation, failed replacement preservation. Explicit configuration file dialogs in UI. | Offline checks passed; canceled dialogs checked; full dialog workflow tracked in follow-up |
+| JSON configuration/session metadata round trip | Configuration persistence, limits, failed replacement preservation; native save/load/cancel and export checked. | Current-host storage and interactive cases passed |
 | SQLite sessions reopen correctly | Parameterized round trip, replacement, transaction rollback, canceled/future/oversize save preservation, identity mismatch rejection. Packaged native SQLite round trip passed separately. | Offline checks passed |
 | Unknown/malformed files do not overwrite valid state | Corrupt SQLite and future versions rejected; rejected overwrites preserve prior database/configuration contents. | Tested cases passed; not an exhaustive hostile-file qualification |
-| Writable location explicit; read-only failure clear | Source review, storage failure and locked-target tests; no implicit persistence directory. | Host checks passed; interactive read-only/USB cases pending |
+| Writable location explicit; read-only failure clear | Explicit USB data storage; native Save As read-only refusal separately from configuration/SQLite failed-write preservation checks. | Named current-host cases passed; direct USB executable startup unresolved |
 | Bounded history and dropped-entry accounting | Smoke checks limit 10, newest-entry retention, demo-aware bound and explicit discarded count. | Offline checks passed |
 | Core has no WPF/Windows dependency | net10.0 project graph and independent source review. | Source/build checks passed; Linux execution untested |
 | Logs exclude secrets and uncontrolled exception data | Fixed-message memory-only operation diagnostics; sanitized UI errors reviewed. | Source review passed |
-| Cancellation/shutdown and storage errors handled | Canceled save preserves state; offscreen process shutdown succeeds; busy close guard reviewed. | Host/source checks passed; interactive close/error workflow pending |
-| Build and foundation runner pass | scripts/Test.ps1: Release build 0 warnings/errors; 36 offline checks passed after the adapter-guidance follow-up. | Passed |
-| Self-contained win-x64 package executes | Extracted ZIP: --smoke-check, --verify-storage, --render-preview all exit 0; included .NET/WPF 10.0.13; no SDK-based launch. | Earlier package passed; revised portable startup gate unresolved; see follow-up |
+| Cancellation/shutdown and storage errors handled | Native canceled dialogs, invalid inputs retaining prior state, unsaved-close Cancel/discard, restart and real-window clean closure checked; busy close guard reviewed. | Named current-host checks passed |
+| Build and foundation runner pass | Release build 0 warnings/errors; 41 checks passed with default fixtures and again with explicit USB storage fixtures. | Passed |
+| Self-contained win-x64 package executes | Final checksum-verified package passed model/layout, packaged storage, render and real-window/dispatcher/closure checks under the unchanged 60-second deadline; included .NET/WPF 10.0.13. | Local extracted package passed; direct USB execution unresolved; clean machine pending |
 | Windows 11, Server 2019/2022/2025 qualification | Separate environment evidence still required; current-host rendering is not full product qualification. | Needs Testing |
 | Final branding/theme and owner acceptance | Provisional light styling; approved name and attribution. Actual assets and final theme unresolved. | Owner review/input pending |
 
 ## Evidence and reproduction
 
-- `scripts/Test.ps1` performs locked normal restore, Release build, and 36 storage/model/adapter checks.
+- `scripts/Test.ps1` performs locked normal restore, Release build, and 41 storage/model/adapter checks on Windows. The same runner also passed with an explicitly selected USB fixture root.
 - `scripts/Publish.ps1 -OutputName win-x64-review1` produced a self-contained runtime-version-pinned ZIP. All normal and RID-specific lockfiles are retained.
 - A subsequent `dotnet restore ProtocolLatencyAnalyzer.sln --locked-mode` succeeded, establishing that publish does not invalidate normal-build locks.
 - `scripts/Verify-Package.ps1 -OutputName win-x64-review1` checked the ZIP hash, extracted a fresh copy, and ran all three offline validation modes. Each exited 0. Detailed results and synthetic PNG are beneath `.artifacts/validation/win-x64-review1`.
-- The delivery package is `ProtocolLatencyAnalyzer-0.1.0-win-x64-phase1.zip`, containing the same reviewed binaries with refreshed README/acceptance/GitHub documentation. Its checksum and final verification evidence are stored alongside the package and under `.artifacts/validation/win-x64-phase1`.
+- The original delivery package was `ProtocolLatencyAnalyzer-0.1.0-win-x64-phase1.zip`. Subsequent feedback and timeout investigation are retained as historical evidence. The final local host candidate is `ProtocolLatencyAnalyzer-0.1.0-win-x64-phase1-validated-local.zip`, checksum `89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9`. It passed all four executable gates; real-window startup/render/dispatcher/closure took 2.296 seconds. See [current host checks](PHASE1_WINDOWS_HOST_CHECKS.md) and [sanitized current results](validation/PHASE1_WINDOWS_HOST_RESULTS.json).
 - Independent source review resolved API integration, UI blocking, configuration limit, session-ignore, and bounded logging findings. Visual review found and corrected narrow table columns and excessive spacing before the review candidate.
 - Historical intake files remained byte-identical locally and are excluded from source publication. Sanitized package results are committed in [PHASE1_HOST_RESULTS.json](validation/PHASE1_HOST_RESULTS.json); local paths, caches, ZIPs and database fixtures are not published.
 
@@ -35,7 +35,7 @@ No protocol traffic, packet capture, driver operations, privileged helper, or of
 
 ## Tracker interpretation
 
-Issue #1 is complete for the reusable core/configuration/session task scope, based on the documented source and host checks. Linux execution remains untested. Issue #2 remains open for dashboard/interactive/owner review; issue #3 remains open for interactive read-only/USB, dialog and close/error workflow checks; issue #4 remains open for target-OS qualification. Later phases remain Todo. Phase 1 overall is not accepted or closed.
+Issue #1 is complete for the reusable core/configuration/session task scope, based on the documented source and host checks. Linux execution remains untested. Issue #2 remains open for owner visual review and final branding; the named interactive workflows passed. Issue #3 remains open for direct USB executable startup and clean-machine qualification, despite passing local portable, USB storage and native workflow checks. Issue #4 remains open for target-OS qualification. Later phases remain Todo. Phase 1 overall is not accepted or closed.
 
 ## Owner feedback follow-up
 

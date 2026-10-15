@@ -1,0 +1,213 @@
+{
+  "TimestampUtc": "2026-10-15T13:36:13.8970870Z",
+  "Scope": "Synthetic model/layout/storage/render checks and a real-window startup/dispatcher check on the current host. Startup initiates read-only local interface inventory; no probes, traffic acquisition, capture or user-data writes. No interactive workflow or other-OS acceptance.",
+  "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
+  "ExecutionLocation": "Explicit directory",
+  "IncludedFrameworks": [
+    {
+      "name": "Microsoft.NETCore.App",
+      "version": "10.0.13"
+    },
+    {
+      "name": "Microsoft.WindowsDesktop.App",
+      "version": "10.0.13"
+    }
+  ],
+  "Checks": [
+    {
+      "Name": "View model and WPF layout",
+      "ExitCode": 0,
+      "DurationSeconds": 2.4503054,
+      "TimedOut": false,
+      "Failure": null,
+      "Stages": [
+        "app-constructor",
+        "entry",
+        "model-checks-begin",
+        "model-demo-on-begin",
+        "model-demo-on-end",
+        "model-demo-off-begin",
+        "model-demo-off-end",
+        "model-demo-on-begin",
+        "model-demo-on-end",
+        "model-demo-off-begin",
+        "model-demo-off-end",
+        "model-checks-end",
+        "window-constructor-begin",
+        "window-constructor-end",
+        "window-demo-off-begin",
+        "window-demo-off-end",
+        "measure-begin",
+        "measure-end",
+        "arrange-begin",
+        "arrange-end",
+        "update-layout-begin",
+        "update-layout-end",
+        "window-demo-on-begin",
+        "window-demo-on-end",
+        "update-layout-begin",
+        "update-layout-end",
+        "window-constructor-begin",
+        "window-constructor-end",
+        "window-demo-off-begin",
+        "window-demo-off-end",
+        "measure-begin",
+        "measure-end",
+        "arrange-begin",
+        "arrange-end",
+        "update-layout-begin",
+        "update-layout-end",
+        "window-demo-on-begin",
+        "window-demo-on-end",
+        "update-layout-begin",
+        "update-layout-end",
+        "shutdown-requested"
+      ]
+    },
+    {
+      "Name": "Packaged SQLite and configuration",
+      "ExitCode": 0,
+      "DurationSeconds": 6.6600959,
+      "TimedOut": false,
+      "Failure": null,
+      "Stages": [
+        "app-constructor",
+        "entry",
+        "storage-checks-begin",
+        "storage-checks-end",
+        "shutdown-requested"
+      ]
+    },
+    {
+      "Name": "Synthetic dashboard render",
+      "ExitCode": 0,
+      "DurationSeconds": 3.3634507,
+      "TimedOut": false,
+      "Failure": null,
+      "Stages": [
+        "app-constructor",
+        "entry",
+        "window-constructor-begin",
+        "window-constructor-end",
+        "measure-begin",
+        "measure-end",
+        "arrange-begin",
+        "arrange-end",
+        "update-layout-begin",
+        "update-layout-end",
+        "render-begin",
+        "render-end",
+        "shutdown-requested"
+      ]
+    },
+    {
+      "Name": "Real window startup and dispatcher responsiveness",
+      "ExitCode": 0,
+      "DurationSeconds": 2.2960607,
+      "TimedOut": false,
+      "Failure": null,
+      "Stages": [
+        "app-constructor",
+        "entry",
+        "normal-window-constructor-begin",
+        "normal-window-constructor-end",
+        "normal-window-show-begin",
+        "normal-window-show-end",
+        "normal-window-content-rendered",
+        "normal-window-application-idle",
+        "normal-window-close-begin",
+        "normal-window-close-end",
+        "shutdown-requested"
+      ]
+    }
+  ],
+  "Build": {
+    "Configuration": "Release",
+    "Warnings": 0,
+    "Errors": 0,
+    "ChecksPassed": 41,
+    "SameChecksPassedWithExplicitUsbStorageRoot": 41,
+    "AuditedLockedRestore": "Passed"
+  },
+  "DirectUsbExecutableStartup": "Unresolved: fresh extraction of the exact final ZIP exceeded the unchanged 60-second model/layout deadline before emitting stage markers. Local portable folder passed all four gates; USB data storage checked separately.",
+  "InteractiveWorkflows": {
+    "TimestampUtc": "2026-10-15T13:31:35.7725579Z",
+    "Method": "Native screenshot observation and input; private storage content verification",
+    "PassedGroupCount": 14,
+    "Passed": [
+      "Explicit adapter selection, refresh retains same choice",
+      "Session rename save new open roundtrip",
+      "Saved adapter identity restored after new session cleared selection",
+      "Configuration save and load roundtrip",
+      "Configuration selected adapter save missing-adapter clear and saved choice restore",
+      "Malformed configuration refused with prior settings retained",
+      "Future configuration schema refused with prior settings retained",
+      "Missing adapter configuration loads without substituting another adapter",
+      "Invalid session refused with current session retained",
+      "Canceled configuration load preserves current state",
+      "Configuration save canceled after native read-only refusal",
+      "Metadata export with demonstration visible; eight expected fields and zero events verified without synthetic metrics",
+      "Unsaved close Cancel retains current session and dirty state",
+      "Unsaved close discard closes app window"
+    ],
+    "CandidateArchiveSha256": "54075c8e09f2da31a8dc14fd375e07f45c0381d7e40366f3b006a8e59e66e7ef",
+    "FinalCandidateRelationship": "MainWindow, XAML and infrastructure unchanged; subsequent application change only gates normal startup tracing behind explicit opt-in. Final candidate independently passed all four executable gates and normal reopen observation.",
+    "ReadOnlyLayer": "Windows Save As refused the read-only fixture before application handler. Separate 41-check runner verified store failure and byte/state preservation."
+  },
+  "PackageVerificationTimestampUtc": "2026-10-15T13:22:23.9848353Z",
+  "FinalNormalReopen": {
+    "TimestampUtc": "2026-10-15T13:33:01.2233959Z",
+    "WindowTitleAppearedSeconds": 2.569,
+    "AnalyzerWindowTitleObserved": true,
+    "LauncherMediumIntegrityObserved": true,
+    "CoreClrAndPresentationFrameworkModulesInsidePackageFolder": true,
+    "Limitation": "Title observation complements the separate ContentRendered/dispatcher/closure gate; it alone does not establish responsiveness or owner acceptance."
+  },
+  "PrivateContentVerification": {
+    "TimestampUtc": "2026-10-15T13:30:58.302745Z",
+    "ConfigurationSchemaVersion": 1,
+    "ConfigurationLimit": 10,
+    "ConfigurationAndExportSelectedIdsPresentAndMatching": true,
+    "ExportFieldsExactlyExpected": true,
+    "ExportEvents": 0,
+    "ExportProductAndAttributionMatch": true,
+    "NoSyntheticMetrics": true
+  },
+  "RemainingQualification": [
+    "Direct USB executable startup unresolved",
+    "Clean independent machine",
+    "Server 2019/2022/2025",
+    "Broader Windows 11 release qualification",
+    "Owner visual acceptance and final branding",
+    "Linux execution is future work"
+  ],
+  "PhaseState": "Phase 1 remains open; Phase 2 not started. App-control approval is not owner acceptance.",
+  "Privacy": "Only allowlisted outcomes and fixed labels published; no user paths, machine names, adapter names, addresses or stable identifiers.",
+  "CurrentHost": {
+    "OperatingSystem": "Windows 11 Pro",
+    "Build": "26200",
+    "Architecture": "x64",
+    "LocalEthernetInventoryCount": 46
+  },
+  "DirectUsbVerification": {
+    "TimestampUtc": "2026-10-15T13:36:13.8970870Z",
+    "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
+    "ExtractedFileCount": 257,
+    "ExecutionLocation": "Fresh explicitly chosen USB directory",
+    "Checks": [
+      {
+        "Name": "View model and WPF layout",
+        "ExitCode": null,
+        "DurationSeconds": 61.6248782,
+        "DurationIncludesBoundedCleanup": true,
+        "DeadlineSeconds": 60,
+        "TimedOut": true,
+        "Failure": "ProcessTimeout",
+        "Stages": []
+      }
+    ],
+    "RemainingChecks": "Packaged SQLite/configuration, synthetic render and real-window startup checks were not reached.",
+    "ProcessRemains": false,
+    "Accepted": false
+  }
+}

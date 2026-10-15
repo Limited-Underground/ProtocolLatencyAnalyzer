@@ -1,5 +1,7 @@
 # Phase 1 owner feedback and host follow-up
 
+This is the historical feedback and timeout record. Subsequent local package and native workflow results, including the unresolved exact-final USB verification, are recorded in [current Windows host checks](PHASE1_WINDOWS_HOST_CHECKS.md) and [sanitized current results](validation/PHASE1_WINDOWS_HOST_RESULTS.json).
+
 The owner reviewed the original Windows dashboard and requested clearer adapter selection for machines with many interfaces, and a File menu to keep the main screen uncluttered. These changes remain within the Phase 1 foundation. Phase 2 is not started.
 
 ## Implemented changes

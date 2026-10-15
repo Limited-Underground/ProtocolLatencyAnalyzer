@@ -8,7 +8,7 @@ The dashboard follows the approved information-dense reference. Any demonstratio
 
 ## Build and run
 
-Requires Windows and the .NET 10 SDK for development. From the project directory:
+Requires Windows, PowerShell 7, and the .NET 10 SDK for development and package verification. From the project directory:
 
 ```powershell
 .\scripts\Build.ps1
@@ -18,7 +18,7 @@ dotnet run --project .\src\ProtocolLatencyAnalyzer.Desktop
 .\scripts\Verify-Package.ps1
 ```
 
-The test project is a console-based foundation test runner. Publish artifacts are written beneath `.artifacts`. Publishing and verification preserve existing outputs; use matching `-OutputName win-x64-review2` arguments for a fresh candidate. The verification script checks the ZIP checksum, extracts it into a new project-local directory, then runs synthetic layout, storage, and render checks without interface inventory or network acquisition. Verification has a 60-second timeout per process.
+The test project is a console-based foundation test runner. Publish artifacts are written beneath `.artifacts`. Publishing and verification preserve existing outputs; use matching `-OutputName win-x64-review2` arguments for a fresh candidate. The verification script checks the ZIP checksum, extracts it into a new project-local directory, then runs synthetic layout, storage, and render checks, followed by a real-window startup/dispatcher check that initiates read-only local adapter inventory. No network acquisition occurs. Verification has a 60-second timeout per process.
 
 The intended distribution is a self-contained Windows x64 portable package using .NET/WPF 10.0.13; it should not require a separately installed .NET runtime. Normal-build and Windows-runtime package locks are separate. Actual package and operating-system validation is recorded in [Phase 1 acceptance](docs/PHASE1_ACCEPTANCE.md). An SDK build or offscreen render does not establish interactive workflow or all-OS acceptance.
 
@@ -51,3 +51,17 @@ Start with [architecture](docs/ARCHITECTURE_PROPOSAL.md), [decisions](docs/DECIS
 ![Phase 1 dashboard showing explicitly synthetic data](docs/images/dashboard-phase1.png)
 
 The preview was rendered by the packaged WPF application. No protocol traffic or capture produced these readings. See the [sanitized host evidence](docs/validation/PHASE1_HOST_RESULTS.json) and [acceptance checklist](docs/PHASE1_ACCEPTANCE.md) for passed checks and outstanding testing. Local ZIPs and caches are not included in the source repository; reproduce them with the scripts above.
+
+
+## Current Windows host validation
+
+The local-folder portable package passes four executable checks, including real-window rendering, dispatcher responsiveness and clean closure. The 41 foundation/storage checks also pass with an explicit USB data root. Direct executable startup from the current USB source drive remains unresolved; see [current host evidence](docs/PHASE1_WINDOWS_HOST_CHECKS.md).
+
+To verify a package from a deliberately selected new local execution folder while retaining project-local evidence:
+
+```powershell
+$reviewFolder = Join-Path $env:TEMP ("PLA-review-" + [guid]::NewGuid().ToString("N"))
+.\scripts\Verify-Package.ps1 -OutputName win-x64-review -ExecutionDirectory $reviewFolder
+```
+
+Use the same OutputName passed to Publish. Existing execution and validation destinations are preserved. Running a portable folder locally and using USB for session data are distinct from direct USB executable qualification.

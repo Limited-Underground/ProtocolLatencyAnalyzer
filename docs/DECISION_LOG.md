@@ -22,5 +22,7 @@ Direct owner instructions supersede earlier proposals and queued-state text in t
 | D-016 | macOS | No current commitment |
 | D-017 | Publish Phase 1 source and reconcile Project completion/testing | Explicitly authorized by owner on October 15, 2026; source-only push, no release/website or elevated capability claim |
 | D-018 | Clear adapter guidance and File menu | Owner feedback during Windows dashboard review; implement within Phase 1, retaining explicit selection and qualified connection/routing hints |
+| D-019 | Finish Phase 1 Windows host checks before Phase 2 | Explicitly requested by owner; local packaged startup and named workflows passed, direct USB executable startup unresolved; preserve separate clean-machine, OS, branding and owner acceptance gates |
+| D-020 | Retain flat self-contained package after bundling experiment | Diagnostic single-file bundle did not resolve the USB startup case and was not adopted; original application dependency lock contexts remain unchanged |
 
 Phase 1 does not authorize network/capture tests, driver installation, device changes, publication, or neighboring-project changes. Linux reuse is a design objective, not a claim that this Windows shell runs on Linux.

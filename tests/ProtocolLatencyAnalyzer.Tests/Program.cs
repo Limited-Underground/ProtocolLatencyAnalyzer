@@ -2,7 +2,19 @@ using Microsoft.Data.Sqlite;
 using ProtocolLatencyAnalyzer.Core;
 using ProtocolLatencyAnalyzer.Infrastructure;
 
-var root = Path.Combine(Path.GetFullPath(args.Length > 0 ? args[0] : ".artifacts"), "PLA-offline-tests-" + Guid.NewGuid().ToString("N"));
+string storageRoot;
+if (args.Length > 0 && args[0] == "--storage-root")
+{
+    if (args.Length != 2 || !Path.IsPathFullyQualified(args[1]))
+        throw new ArgumentException("--storage-root requires one absolute existing .artifacts directory path.");
+    storageRoot = Path.GetFullPath(args[1]);
+    if (!storageRoot.Split([Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar], StringSplitOptions.RemoveEmptyEntries)
+            .Contains(".artifacts", StringComparer.OrdinalIgnoreCase) || !Directory.Exists(storageRoot))
+        throw new ArgumentException("--storage-root must exist and contain a .artifacts directory segment.");
+}
+else storageRoot = Path.GetFullPath(args.Length > 0 ? args[0] : ".artifacts");
+var root = Path.Combine(storageRoot, "PLA-offline-tests-" + Guid.NewGuid().ToString("N"));
+if (Directory.Exists(root) || File.Exists(root)) throw new IOException("Unique test directory already exists.");
 Directory.CreateDirectory(root);
 int passed = 0;
 void Check(bool condition, string name) { if (!condition) throw new Exception(name); Console.WriteLine("PASS " + name); passed++; }
@@ -48,6 +60,23 @@ try
         await RejectLockedReplacement(() => configuration.SaveAsync(new AnalyzerConfiguration { MaxVisibleEvents = 75 }));
     Check((await configuration.LoadAsync()).MaxVisibleEvents == 50, "failed replacement preserves original configuration");
     Check(!Directory.EnumerateFiles(root, "*.tmp").Any(), "failed replacement cleans temporary file");
+    if (OperatingSystem.IsWindows())
+    {
+        var settingsPath = Path.Combine(root, "settings.json");
+        var originalSettings = await File.ReadAllBytesAsync(settingsPath);
+        var attributes = File.GetAttributes(settingsPath);
+        try
+        {
+            File.SetAttributes(settingsPath, attributes | FileAttributes.ReadOnly);
+            try { await configuration.SaveAsync(new AnalyzerConfiguration { MaxVisibleEvents = 75 }); throw new InvalidOperationException("Expected read-only configuration rejection."); }
+            catch (Exception error) when (error is IOException or UnauthorizedAccessException)
+            { Check(true, "Windows read-only configuration overwrite rejected"); }
+            Check((await File.ReadAllBytesAsync(settingsPath)).SequenceEqual(originalSettings)
+                && (await configuration.LoadAsync()).MaxVisibleEvents == 50, "read-only configuration preserves valid original bytes and state");
+            Check(!Directory.EnumerateFiles(root, "*.tmp").Any(), "read-only configuration failure cleans temporary file");
+        }
+        finally { File.SetAttributes(settingsPath, attributes); }
+    }
     await File.WriteAllTextAsync(Path.Combine(root, "settings.json"), "{\"SchemaVersion\":2}");
     await Reject<InvalidDataException>(() => configuration.LoadAsync(), "future configuration read rejected");
     var repository = new SessionRepository(root);
@@ -58,6 +87,25 @@ try
     Check(opened.Name == session.Name && opened.Events.SequenceEqual(session.Events) && opened.SelectedInterfaceId == session.SelectedInterfaceId && opened.Origin == "Simulation", "SQLite parameterized round trip");
     session.Name = "Updated"; await repository.SaveAsync(session);
     Check((await repository.OpenAsync(session.Id)).Events.Count == 1, "save replaces instead of duplicating events");
+    if (OperatingSystem.IsWindows())
+    {
+        var sessionPath = repository.GetSessionPath(session.Id);
+        var originalDatabase = await File.ReadAllBytesAsync(sessionPath);
+        var attributes = File.GetAttributes(sessionPath);
+        try
+        {
+            File.SetAttributes(sessionPath, attributes | FileAttributes.ReadOnly);
+            session.Name = "Must not replace read-only session";
+            try { await repository.SaveAsync(session); throw new InvalidOperationException("Expected read-only session rejection."); }
+            catch (SqliteException error) when (error.SqliteErrorCode == 8)
+            { Check(true, "Windows read-only SQLite session save rejected"); }
+            var preserved = await repository.OpenAsync(session.Id);
+            Check((await File.ReadAllBytesAsync(sessionPath)).SequenceEqual(originalDatabase)
+                && preserved.Name == "Updated" && preserved.Events.SequenceEqual(opened.Events)
+                && preserved.SelectedInterfaceId == opened.SelectedInterfaceId, "read-only SQLite session preserves valid original bytes and state");
+        }
+        finally { File.SetAttributes(sessionPath, attributes); session.Name = "Updated"; }
+    }
     using (var connection = new SqliteConnection($"Data Source={repository.GetSessionPath(session.Id)};Pooling=False"))
     {
         await connection.OpenAsync(); using var command = connection.CreateCommand();
@@ -105,5 +153,12 @@ try
     return 0;
 }
 catch (Exception error) { Console.Error.WriteLine(error); return 1; }
-finally { SqliteConnection.ClearAllPools(); Directory.Delete(root, recursive: true); }
+finally
+{
+    SqliteConnection.ClearAllPools();
+    if (!string.Equals(Path.GetDirectoryName(Path.GetFullPath(root)), Path.TrimEndingDirectorySeparator(storageRoot),
+            OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
+        throw new IOException("Refusing cleanup outside the owned test directory.");
+    Directory.Delete(root, recursive: true);
+}
 

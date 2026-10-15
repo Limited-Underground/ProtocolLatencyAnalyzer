@@ -11,9 +11,9 @@ Owner-authorized source publication and tracker reconciliation: October 15, 2026
 
 | Issue | Status | Validation / remaining work |
 |---|---|---|
-| #1 Reusable core, configuration and sessions | Closed / Done | Accepted for this task scope using source/build and 36 offline checks; Linux execution untested |
-| #2 WPF dashboard foundation | Open / In Progress | Implementation and offscreen checks complete; owner visual/interactive review and final branding remain |
-| #3 Portable packaging and host validation | Open / In Progress | Host checks only; interactive read-only/USB, dialogs, close/error workflows and clean-machine acceptance remain |
+| #1 Reusable core, configuration and sessions | Closed / Done | Accepted for this task scope using source/build and 41 checks, repeated with explicit USB storage fixtures; Linux execution untested |
+| #2 WPF dashboard foundation | Open / In Progress | Named native interactive workflows passed; owner visual review and final branding remain |
+| #3 Portable packaging and host validation | Open / In Progress | Four local packaged executable gates and named native workflows passed; direct USB executable startup unresolved and clean-machine qualification pending |
 | #4 Target operating-system acceptance | Open / Todo | Needs target OS testing: Windows 11 and Server 2019/2022/2025 |
 | #5-#10 Later phases | Open / Todo | Existing scope and approval gates retained |
 
@@ -21,13 +21,13 @@ Phase 1 milestone remains open. A closed implementation task does not establish 
 
 Published contents are source, tests, build/verification scripts, configuration/lockfiles, licenses/notices, curated documentation, sanitized host evidence and a synthetic dashboard preview. Historical intake files, caches, generated build outputs, operational configuration/sessions, captures and local ZIPs are excluded.
 
-Host evidence: Release build with zero warnings/errors; 36 offline core/storage/adapter checks; inspected WPF layout; extracted ZIP view-model/layout, packaged SQLite/configuration and synthetic render checks all exit 0; included .NET/WPF 10.0.13. See [acceptance evidence](PHASE1_ACCEPTANCE.md) and [original sanitized results](validation/PHASE1_HOST_RESULTS.json) and [36-check follow-up results](validation/PHASE1_FEEDBACK_RESULTS.json). No interactive or target-OS acceptance is inferred.
+Current host evidence: Release build with zero warnings/errors; 41 core/storage/adapter checks, repeated with USB storage fixtures; four extracted local package gates including real-window/dispatcher/closure; 14 native workflow groups. Included runtime remains .NET/WPF 10.0.13. See [current host checks](PHASE1_WINDOWS_HOST_CHECKS.md), [current sanitized results](validation/PHASE1_WINDOWS_HOST_RESULTS.json), [acceptance evidence](PHASE1_ACCEPTANCE.md), [original results](validation/PHASE1_HOST_RESULTS.json) and [historical 36-check follow-up results](validation/PHASE1_FEEDBACK_RESULTS.json). No broader target-OS or owner acceptance is inferred.
 
 The exact organization handle is Limited-Underground. Existing repositories and Trail Project #1 are outside this project's scope. Release publication, website deployment, live captures and device actions retain separate authorization requirements.
 
-The owner-feedback follow-up adds qualified adapter suggestions and the File menu. Current validation details are recorded in [PHASE1_FEEDBACK.md](PHASE1_FEEDBACK.md); implementation, interactive host checks and owner acceptance remain separate.
+The owner-feedback follow-up adds qualified adapter suggestions and the File menu. The [feedback history](PHASE1_FEEDBACK.md) retains earlier failures; [current Windows host checks](PHASE1_WINDOWS_HOST_CHECKS.md) record subsequent verification. Implementation, interactive host checks and owner acceptance remain separate.
 
 
 
-The latest feedback candidate has an unresolved portable startup gate: its synthetic layout mode exceeded the unchanged 60-second limit. Development-build normal startup, 46-adapter inventory, File menu and focused-field Ctrl+N/O/S/E checks passed. Remaining interactive checks were limited by native accessibility observation stalls. Issues #2 and #3 remain open; no current portable or overall Phase 1 acceptance is claimed.
+Historical feedback candidates exceeded the unchanged 60-second startup gate, and early native-helper approval/observation failures limited interactive checks. Subsequent testing passed all four local packaged executable gates and the named native workflows; those results do not erase earlier failures. Direct USB executable startup remains unresolved. Issues #2 and #3 remain open, and overall Phase 1 acceptance is not claimed. App-control approval is permission to operate the test helper, not owner acceptance of the dashboard.
 
