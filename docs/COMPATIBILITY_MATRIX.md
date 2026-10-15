@@ -2,6 +2,8 @@
 
 Documentation support for a framework is distinct from tested application/package/capture support.
 
+Current owner direction: continue official downloads/offline preparation; defer evaluation VM creation, startup and qualification until testing is resumed. All existing results below remain unchanged.
+
 | Operating system | .NET/WPF basis | Portable application | Native capture | Npcap | Privileges and limits |
 |---|---|---|---|---|---|
 | Windows 11 x64 | Supported by Documentation | Build 26200 local and USB four-gate package checks and named workflows passed; fresh Windows 11 VM coverage unestablished | Needs Testing | Needs Testing | Medium-integrity launcher observed; copy-related USB contention demonstrated; broader release qualification pending; capture later |

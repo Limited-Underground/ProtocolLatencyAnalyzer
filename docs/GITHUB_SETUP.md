@@ -19,6 +19,8 @@ Owner-authorized source publication and tracker reconciliation: October 15, 2026
 
 Phase 1 milestone remains open. A closed implementation task does not establish overall Phase 1 acceptance, compatibility on another OS, or owner acceptance.
 
+Latest owner direction is **keep preparing; test later**: official downloads and offline preparation continue, while evaluation VM creation, startup and qualification are deferred until the owner resumes testing. Issue #4 remains preparation in progress with OS execution Needs Testing; no prior result is superseded.
+
 Server evaluation preparation has validated elevated read-only Hyper-V access and inventoried five protected preexisting VMs. After the owner's independent Home Assistant shutdown, available RAM briefly reached 5.25 GiB; the latest elevated inventory found 2.69 GiB and all five preexisting VMs Off. The 4.5 GiB creation/start resource guard is currently unmet. Use one disconnected Ethernet NIC, 2 vCPUs and a 64 GiB dynamic disk; no host switch or existing VM changes. Windows UAC remains the normal lifecycle-consent step. Official images are downloading; a preparation attempt exited before recording intent, and complete inventory confirms no evaluation VM exists or guest OS execution/pass occurred. Clean Server evidence will apply only to those baselines; a fresh Windows 11 VM is not an added mandatory gate. See [the evaluation plan](PHASE1_SERVER_TEST_PLAN.md).
 
 Published contents are source, tests, build/verification scripts, configuration/lockfiles, licenses/notices, curated documentation, sanitized host evidence and a synthetic dashboard preview. Historical intake files, caches, generated build outputs, operational configuration/sessions, captures and local ZIPs are excluded.

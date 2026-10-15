@@ -4,6 +4,8 @@ The owner authorized official Microsoft trial-image downloads, isolated Windows 
 
 ## Current checkpoint and prerequisites
 
+The owner's latest direction is **keep preparing; test later**. Continue official image downloads and offline preparation only. VM creation, guest startup and qualification are deferred until the owner resumes testing, even if memory becomes available. Retain the prior results and resource guards below.
+
 Official Microsoft image downloads are in progress, approximately 18.85 GB total, with Server 2019 transferring and 2022/2025 queued. Download completion is preparation only. Official download provenance is validated. The creation attempt exited before recording intent; a subsequent complete elevated inventory confirms no new evaluation VM exists. No guest OS has started or passed qualification.
 
 Hyper-V is installed and running; an elevated read-only inventory succeeded and recorded five protected preexisting VMs. No host setting was changed. The management access method is validated; lifecycle commands still use ordinary Windows UAC consent under the existing authorization. No feature installation, host reboot, or host networking change is planned.
