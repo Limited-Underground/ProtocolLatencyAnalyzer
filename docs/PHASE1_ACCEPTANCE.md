@@ -4,7 +4,7 @@ Phase 1 is the portable desktop foundation only. Implementation and offline host
 
 | Criterion | Evidence required | Status |
 |---|---|---|
-| WPF shell preserves dense approved layout and identity | Actual WPF RenderTargetBitmap at 1536x1024 visually inspected; all panels visible after table sizing correction. Offline layout assertions at 1280x800 and 1536x1024. | Host checks passed; File menu/keyboard and normal startup checked; owner review pending |
+| WPF shell preserves dense approved layout and identity | Actual WPF RenderTargetBitmap at 1536x1024 visually inspected; offline layout assertions at 1280x800 and 1536x1024; 14 native workflow groups; explicit owner dashboard acceptance. | Phase 1 dashboard accepted by owner |
 | Synthetic versus unavailable/live data is explicit | Empty initial state, opt-in demo, unavailable protocol rows, synthetic adapter and banner assertions. | Host checks passed |
 | Ethernet inventory and stable selection | Read-only inventory and stable identifiers; explicit selection, refresh, session/configuration restoration and missing-adapter cases checked. | Current-host cases passed; no physical adapter reconfiguration/removal performed |
 | No interface-routing or capture guarantee implied | UI/capability text and independent source review. | Source review passed |
@@ -18,8 +18,8 @@ Phase 1 is the portable desktop foundation only. Implementation and offline host
 | Cancellation/shutdown and storage errors handled | Native canceled dialogs, invalid inputs retaining prior state, unsaved-close Cancel/discard, restart and real-window clean closure checked; busy close guard reviewed. | Named current-host checks passed |
 | Build and foundation runner pass | Release build 0 warnings/errors; 41 checks passed with default fixtures and again with explicit USB storage fixtures. | Passed |
 | Self-contained win-x64 package executes | Final unchanged package passed four local gates and all four USB gates after no copy processes were present. Each retained a 60-second deadline; USB real-window startup took 2.3335344 seconds. Earlier active/held/resumed smoke failures/pass preserved. | Local and USB package checks passed on current host; clean machine pending |
-| Windows 11, Server 2019/2022/2025 qualification | Separate environment evidence still required; current-host rendering is not full product qualification. | Needs Testing |
-| Final branding/theme and owner acceptance | Provisional light styling; approved name and attribution. Actual assets and final theme unresolved. | Owner review/input pending |
+| Windows 11, Server 2019/2022/2025 qualification | Separate environment evidence still required; isolated Desktop Experience evaluation tests authorized under the Server test plan. Image downloads alone are not execution evidence. | Needs Testing; Server evaluation preparation in progress |
+| Phase 1 styling and owner acceptance | Owner explicitly accepted current dashboard and light styling for Phase 1; approved name and attribution. | Phase 1 visual acceptance complete; official brand assets/future theme decisions remain separate |
 
 ## Evidence and reproduction
 
@@ -35,11 +35,12 @@ No protocol traffic, packet capture, driver operations, privileged helper, or of
 
 ## Tracker interpretation
 
-Issue #1 is complete for the reusable core/configuration/session task scope, based on the documented source and host checks. Linux execution remains untested. Issue #2 remains open for owner visual review and final branding; the named interactive workflows passed. Issue #3's current-host local and USB package gates passed; clean-machine qualification remains pending. The earlier approved failure/pass/failure comparison demonstrates copy-related USB contention, and the unchanged package subsequently passed all four USB gates with no copy processes present. Issue #4 remains open for target-OS qualification. Later phases remain Todo. Phase 1 overall is not accepted or closed; Phase 2 has not started.
+Issue #1 is complete for the reusable core/configuration/session task scope; Linux execution remains untested. Issue #2's Phase 1 dashboard scope is complete following explicit owner acceptance of the current dashboard/light styling and the prior 14 native workflow groups. This does not approve a final official brand identity. Issue #3's current-host local and USB package gates passed; clean-machine qualification remains pending. The earlier approved failure/pass/failure comparison demonstrates copy-related USB contention, and the unchanged package subsequently passed all four USB gates with no copy processes present. Issue #4's authorized Server evaluation preparation is In Progress with official download provenance validated; actual OS execution remains Needs Testing. Later phases remain Todo. Phase 1 remains open; Phase 2 has not started.
 
 ## Owner feedback follow-up
 
-The dashboard now shows connection state and qualified adapter suggestions, with full details collapsed by default. File commands moved into a File menu; configuration is under Tools > Settings. See [follow-up evidence](PHASE1_FEEDBACK.md) and [sanitized package results](validation/PHASE1_FEEDBACK_RESULTS.json). These changes do not establish owner acceptance or another operating system's qualification.
+The dashboard now shows connection state and qualified adapter suggestions, with full details collapsed by default. File commands moved into a File menu; configuration is under Tools > Settings. See [follow-up evidence](PHASE1_FEEDBACK.md) and [sanitized package results](validation/PHASE1_FEEDBACK_RESULTS.json). The owner subsequently accepted the current dashboard/light styling for Phase 1. Other operating systems still require qualification.
 
+## Isolated Server evaluation gate
 
-
+The owner approved Desktop Experience and official Microsoft trial downloads for Server 2019/2022/2025, isolated VM qualification, and deletion of only this project's newly created evaluation resources afterward. Follow [PHASE1_SERVER_TEST_PLAN.md](PHASE1_SERVER_TEST_PLAN.md). Elevated read-only inventory succeeded and protected five preexisting VMs. The owner independently shut down Home Assistant; available RAM briefly reached 5.25 GiB but the latest elevated inventory measured 2.69 GiB, below the 4.5 GiB creation/start guard for the selected 3 GiB guest. All five preexisting VMs were Off. Lifecycle commands still require ordinary Windows UAC consent; no host-feature/reboot change is needed. The preparation attempt exited before recording intent; complete inventory confirms no evaluation VM was created and no Server guest OS has started or passed. Downloads are preparation only. Fresh Server tests can establish clean-machine evidence for those baselines, alongside valid current Windows 11 host checks. Fresh Windows 11 VM coverage remains an unestablished limitation rather than a new mandatory gate; broader production/release qualification is separate.
