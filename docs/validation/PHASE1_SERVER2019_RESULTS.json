@@ -1,0 +1,241 @@
+{
+  "SchemaVersion": 1,
+  "TimestampUtc": "2026-10-16T01:13:50.9878275Z",
+  "LatestSavedGuiEvidenceTimestampUtc": "2026-10-16T01:39:23.3620000Z",
+  "BackgroundCheckpointTimestampUtc": "2026-10-16T02:25:14.1791161Z",
+  "Scope": "Bounded Phase 1 clean Windows Server 2019 Standard Evaluation Desktop Experience qualification",
+  "Overall": "Automated executable gates passed; GUI paused by owner to keep the screen free; full interactive acceptance, export-content inspection, evidence export and cleanup pending",
+  "CurrentWorkBoundary": "Screen control remains paused until the owner releases the desktop. Background Phase 1 work is authorized. This checkpoint performs evidence, documentation and tracker work only; no new GUI, UAC, VM lifecycle or download activity occurred",
+  "ArchiveSha256": "89b17ee349f72ee4698f52d5ec976043917f1bf7a48f1101aac120ee4535b0d9",
+  "Image": {
+    "Source": "https://go.microsoft.com/fwlink/p/?LinkID=2195167&clcid=0x409&culture=en-us&country=US",
+    "ResolvedUrl": "https://software-static.download.prss.microsoft.com/dbazure/988969d5-f34g-4e03-ac9d-1f9786c66749/17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso",
+    "Bytes": 5652088832,
+    "Sha256": "6dae072e7f78f4ccab74a45341de0d6e2d45c39be25f1f5920a2ab4f51d7bcbb",
+    "DigestMeaning": "Local integrity identifier; not compared with a published vendor digest",
+    "SelectedImageIndex": 2,
+    "SelectedImageName": "Windows Server 2019 Standard Evaluation (Desktop Experience)",
+    "Language": "en-US",
+    "Version": "10.0.17763.3650",
+    "Architecture": "x64"
+  },
+  "GuestBaseline": {
+    "Caption": "Microsoft Windows Server 2019 Standard Evaluation",
+    "Version": "10.0.17763",
+    "Build": "17763.3650",
+    "Architecture": "x64",
+    "EditionId": "ServerStandardEval",
+    "InstallationType": "Server",
+    "DesktopExperience": true,
+    "DesktopReached": true,
+    "GuestClockUtc": "2026-10-16T01:11:21.3729485Z",
+    "PowerShellVersion": "5.1.17763.2931",
+    "ProcessorCount": 2,
+    "MemoryAssignedBytes": 3221225472,
+    "MemoryStartupBytes": 3221225472,
+    "DynamicMemoryEnabled": false,
+    "ConfiguredDynamicDiskCapacityGiB": 64,
+    "NicDisconnected": true,
+    "SdkVersions": [],
+    "GlobalRuntimeVersions": [],
+    "GlobalDotNet10Detected": false,
+    "BuiltinNetFrameworkRelease": 461814,
+    "UpdatesInstalledByHelper": false,
+    "HotFixes": [
+      { "HotFixId": "KB5020627", "InstalledOn": "2022-11-05" },
+      { "HotFixId": "KB5019966", "InstalledOn": "2022-11-05" },
+      { "HotFixId": "KB5020374", "InstalledOn": "2022-11-05" }
+    ],
+    "EvaluationLicense": {
+      "LicenseStatus": 2,
+      "GracePeriodMinutes": 14391,
+      "ActivationClaim": "Not established; recorded offline evaluation status only"
+    },
+    "ProductionBaselineClaim": "Not a current patched or activated production baseline"
+  },
+  "ExecutionContext": {
+    "StandardUser": true,
+    "AdministratorsGroupMember": false,
+    "EffectiveAdministrator": false,
+    "TokenIntegrity": "Medium",
+    "NonzeroInteractiveSession": true,
+    "UserInteractive": true,
+    "InteractiveDesktopEligible": true,
+    "ApplicationElevated": false
+  },
+  "IncludedFrameworks": [
+    { "Name": "Microsoft.NETCore.App", "Version": "10.0.13" },
+    { "Name": "Microsoft.WindowsDesktop.App", "Version": "10.0.13" }
+  ],
+  "Checks": [
+    {
+      "Name": "Model and WPF layout",
+      "Status": "Passed",
+      "ExitCode": 0,
+      "DurationSeconds": 3.1960218,
+      "DeadlineSeconds": 60,
+      "TimedOut": false,
+      "Failure": null
+    },
+    {
+      "Name": "Packaged SQLite and configuration",
+      "Status": "Passed",
+      "ExitCode": 0,
+      "DurationSeconds": 0.3576986,
+      "DeadlineSeconds": 60,
+      "TimedOut": false,
+      "Failure": null
+    },
+    {
+      "Name": "Synthetic documentation render",
+      "Status": "Passed",
+      "ExitCode": 0,
+      "DurationSeconds": 0.8068639,
+      "DeadlineSeconds": 60,
+      "TimedOut": false,
+      "Failure": null
+    },
+    {
+      "Name": "Interactive real window startup and dispatcher",
+      "Status": "Passed",
+      "ExitCode": 0,
+      "DurationSeconds": 1.0698336,
+      "DeadlineSeconds": 60,
+      "TimedOut": false,
+      "Failure": null
+    }
+  ],
+  "ReviewWindowObservation": {
+    "ReconciliationTimestampUtc": "2026-10-16T01:36:27.6705874Z",
+    "ReadOnlyObserver": true,
+    "ObserverInSessionZero": true,
+    "ObserverInteractive": false,
+    "ApplicationInExpectedNonzeroInteractiveSession": true,
+    "ApplicationOwnedByStandardReviewer": true,
+    "TaskAndProcessMatch": true,
+    "TaskRunLevel": "Limited",
+    "ApplicationProcessStillPresent": true,
+    "MainWindowHandleFromObserver": 0,
+    "ObserverReceiptGuiAcceptance": "Not determined",
+    "PriorLaunchFailurePreserved": true,
+    "ConsoleObservations": [
+      "The matching application was visibly responding in the guest console",
+      "Saving the synthetic session succeeded and cleared its dirty indicator",
+      "The demonstration-data label was visible"
+    ],
+    "Interpretation": "The observer failed to detect a visibly usable application. Exact task/process/session correlation and console observations support a cross-session observation limitation as an explanation; the precise causal mechanism is not proved",
+    "PrivateConsoleCorrelationFinalization": "The saved GUI-progress receipt links the exact reconciliation receipt; a separate immutable background checkpoint links the original evidence and later console observations. The original observer-only flags remain unchanged and do not themselves accept GUI launch",
+    "SavedGuiProgressLinksExactReconciliation": true,
+    "SeparateBackgroundCheckpointLinksRootConsoleEvidence": true,
+    "OriginalObserverFlagsUnchanged": true,
+    "FullInteractiveAcceptance": "Pending"
+  },
+  "InteractiveWorkflows": {
+    "Status": "Paused by owner to keep the screen free",
+    "RequiredChecklistItems": 8,
+    "CompletedChecklistItems": 0,
+    "SavedNarrowCasesPassed": 7,
+    "DisplayResolution": "1024x768 reported by display-adapter metadata; maximized console layout fit with scrolling observed separately",
+    "DisplayScaling": null,
+    "SavedGuiReceipt": {
+      "Kind": "OwnedTrialManualProgress",
+      "RecordedUtc": "2026-10-16T01:39:23.3620000Z",
+      "RecordedStatus": "InProgress",
+      "CurrentStatusSupersededByOwnerPause": true,
+      "Cases": [
+        "initial_dashboard",
+        "file_menu_and_save_cancel",
+        "focused_new_cancel",
+        "focused_export_cancel",
+        "focused_open_cancel",
+        "save_synthetic_session",
+        "demonstration_and_adapter_labels"
+      ]
+    },
+    "SubsequentDirectObservations": [
+      "Metadata-export UI completed; exported file contents have not been inspected",
+      "Configuration save succeeded and the saved configuration was loaded without an observed error; full configuration round-trip verification is incomplete",
+      "Escape stopped further UI work before the owner requested that the screen remain free"
+    ],
+    "Results": [
+      {
+        "ChecklistItem": 1,
+        "Status": "Partially observed",
+        "Observation": "Normal initially untitled dashboard and layout fit with scrolling observed; display-adapter metadata reports 1024x768. No active tests, measured samples or acquired evidence; capture unavailable. Effective display scaling remains unverified"
+      },
+      {
+        "ChecklistItem": 2,
+        "Status": "Partially observed",
+        "Observation": "File menu lists New/Open/Save/Export and Ctrl+N/O/S/E. With session-name focus, Ctrl+S directory picker and Ctrl+E export dialog were canceled; Ctrl+N and Ctrl+O unsaved-changes warnings were canceled with state preserved. The native Open file picker was not reached or canceled"
+      },
+      {
+        "ChecklistItem": 3,
+        "Status": "Partially observed",
+        "Observation": "Demonstration and synthetic-preview labels observed with no traffic/capture and no measured-sample claims; all five displayed adapters were Disconnected/NotPresent. Saved/exported content exclusions remain unverified"
+      },
+      {
+        "ChecklistItem": 4,
+        "Status": "Partially observed",
+        "Observation": "Synthetic session renamed and saved, dirty indicator cleared, identity preserved and no measurement data reported; a disconnected adapter was selected and saved. New/open restoration checks remain pending"
+      },
+      {
+        "ChecklistItem": 5,
+        "Status": "Partially observed",
+        "Observation": "Subsequent direct observation: configuration save succeeded and loading it showed no error; round-trip equivalence and invalid/future/unavailable-adapter fixtures remain unverified",
+        "UnavailableAdapterExpectedBehavior": "Accept an otherwise valid configuration that references an unavailable adapter; leave the adapter unavailable/unselected without substituting another adapter or claiming routing"
+      },
+      {
+        "ChecklistItem": 6,
+        "Status": "Partially observed",
+        "Observation": "Metadata-export UI completed and reported metadata only; actual fields and absence of secrets, payloads and synthetic measurements still require file-content inspection"
+      },
+      {
+        "ChecklistItem": 7,
+        "Status": "Pending",
+        "Observation": "Owned read-only destination and malformed-session preservation checks remain untested"
+      },
+      {
+        "ChecklistItem": 8,
+        "Status": "Pending",
+        "Observation": "Close/Cancel retention, discard/reopen, clean shutdown and no acquisition resume remain untested"
+      }
+    ]
+  },
+  "EvidenceAndCleanup": {
+    "MetadataExportUi": "Completed; content inspection pending",
+    "MetadataExportContentInspection": "Pending",
+    "ConfigurationRoundTripVerification": "Incomplete; save and load UI observed without an error",
+    "RawEvidenceExport": "Pending",
+    "OwnedResourceCleanup": "Pending",
+    "ProtectedPreexistingVmCount": 5,
+    "ProtectedInventoryVerifiedAtReadiness": true,
+    "ProtectedInventoryVerifiedAtReviewReconciliation": true,
+    "ProtectedInventoryVerifiedAfterCleanup": null
+  },
+  "BackgroundCheckpoint": {
+    "Kind": "OwnedTrialBackgroundCheckpoint",
+    "RecordedUtc": "2026-10-16T02:25:14.1791161Z",
+    "OriginalEvidenceLinkedBySha256": true,
+    "LaterConsoleObservationsRecordedSeparately": true,
+    "ScreenControlUsed": false,
+    "VmOperationsPerformed": false,
+    "FullInteractiveAcceptance": false,
+    "FullTargetOsAcceptance": false,
+    "Phase2Started": false
+  },
+  "HistoricalEvidenceRetained": [
+    "Initial UEFI DVD boot failure and manual prompt recovery; installation later reached the desktop",
+    "Initial storage-relocation parameter-conversion failure before copying; guarded retry and reconciliation succeeded",
+    "Earlier Windows host and USB timeout, failure and pass evidence remains in its original documents",
+    "Earlier review-launcher failure and window-observation timeout retained; subsequent task/process and console observations do not erase those receipts"
+  ],
+  "RemainingQualification": [
+    "Resume Server 2019 GUI only after owner authorization; complete the remaining interactive checklist, export-content inspection, evidence export and receipt-owned cleanup",
+    "Server 2022 evaluation download and qualification",
+    "Server 2025 evaluation download and qualification",
+    "Fresh Windows 11 VM coverage remains unestablished; current Windows 11 host evidence remains valid",
+    "Broader production, release, capture and protocol qualification remains separate"
+  ],
+  "PhaseState": "Phase 1 remains open; Phase 2 has not started",
+  "Privacy": "Sanitized allowlisted evidence only; no private paths, account names, VM or run identifiers, credentials or remoting metadata"
+}
