@@ -1,10 +1,62 @@
 # Protocol Latency Analyzer Progress Log
 
-Historical milestones reconstructed from public Git history and repository evidence.
-All source-history milestones below were committed on 2026-10-15; later UTC receipt
-timestamps remain in their owning records. Entries are newest first. Current
-acceptance belongs to [Phase 1 acceptance](PHASE1_ACCEPTANCE.md), with decisions in
-the [decision log](DECISION_LOG.md). Historical evidence is summarized, not rerun here.
+Historical October 15 milestones were reconstructed from published Git history.
+Later entries explicitly distinguish local unpublished candidates, recorded host
+checks, target-OS baselines and release acceptance. Entries are newest first.
+Current acceptance belongs to [Phase 1 acceptance](PHASE1_ACCEPTANCE.md), with
+decisions in the [decision log](DECISION_LOG.md). Historical tests are not rerun
+by this log reconciliation.
+
+## 2026-10-29
+
+### Issue #3 — Validate an unpublished TCP preview package with a retained path limitation
+
+The local self-contained TCP preview passed seven publish-preservation cases,
+five verifier/receipt guards, four extracted-package executable gates and 86
+actual STA/WPF checks using an explicitly shorter synthetic storage root.
+Independent security/integration/test review passed within that current-host
+scope. ZIP SHA-256: `66bb169b749de0ee3f70339a0798c7edea4f49c2d9035b86a01c06d7ceea6c13`;
+439 extracted file hashes matched. The original default-path storage failure at
+266 characters remains preserved; the short-path pass neither accepts long paths
+nor proves the precise native cause. Matching selected binaries across publishes
+does not establish deterministic ZIP or independent clean-build reproducibility.
+[Issue #3](https://github.com/Limited-Underground/ProtocolLatencyAnalyzer/issues/3)
+remained open at this checkpoint. No source publication, release, physical
+Ethernet or qualification on another OS followed from this local package.
+
+### Issue #4 — Establish a fresh offline Server 2019 qualification baseline
+
+A separate clean Server 2019 Standard Evaluation Desktop Experience guest reached
+completed Setup/OOBE and build 17763.3650, with disconnected Ethernet and usable
+PowerShell Direct access. Initial evaluation grace was about ten days, not an
+activated 180-day evaluation. No PLA package was transferred or executed on this
+new guest at this checkpoint; prior guest results do not transfer to it. See the
+[fresh-baseline evidence and limits](https://github.com/Limited-Underground/ProtocolLatencyAnalyzer/issues/4).
+Remaining application, standard-user, interactive/export and cleanup gates remain
+under [issue #4](https://github.com/Limited-Underground/ProtocolLatencyAnalyzer/issues/4).
+
+## 2026-10-28
+
+### PLA-0016 and PLA-0017 — Complete bounded TCP engine and desktop host candidates
+
+The approved headless TCP IPv4 slice passed a zero-warning/error Release build,
+41 foundation regressions, 186 deterministic TCP checks and eight authorized
+loopback checks. The separately approved WPF integration added explicit source
+and target selection, bounded Start/Cancel, truthful failure timing and stale-
+result/lifecycle refusal. Its 86 actual WPF checks and affected smoke gate passed;
+independent reviews passed. These are uncommitted isolated candidates, not merged
+source, measurement persistence, external Ethernet acceptance or a release.
+[Headless child PLA-0016](https://github.com/orgs/Limited-Underground/projects/2?pane=issue&itemId=286342858)
+and [desktop child PLA-0017](https://github.com/orgs/Limited-Underground/projects/2?pane=issue&itemId=286342988)
+record those bounded completions; parent issue #5 retains owner/operational gates.
+
+### Issue #3 — Correct publish-output preservation before SDK execution
+
+A separate uncommitted packaging fix moved publish/ZIP/checksum collision refusal
+before SDK execution. Seven focused cases passed and independent review found no
+open actionable findings. Existing foundation, USB and Server results were reused
+within their original scope; this fix did not requalify an application or OS.
+See the [development-resume checkpoint](https://github.com/Limited-Underground/ProtocolLatencyAnalyzer/issues/3).
 
 ## 2026-10-15
 
