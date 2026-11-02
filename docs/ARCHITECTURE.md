@@ -62,6 +62,9 @@ C4 `SystemContext` and `Containers` views. Core and Infrastructure are assemblie
 inside the desktop runtime, not independent C4 containers. The endpoint relationship
 is explicitly labelled preview-only; it is absent from published foundation code.
 Generated JSON/presentation is derived from this model, not a second specification.
+The [generated workspace JSON](architecture/workspace.json) passed official
+Structurizr `2026.09.19` validation and JSON/static export on November 2; exact
+tool/model/output hashes and the limited claim are in the lineage record.
 
 ## 4. Solution Strategy
 

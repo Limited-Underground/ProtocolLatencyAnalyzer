@@ -220,6 +220,10 @@ It is not bundled in this public product clone. The common handbook owner
 retains command logs and `receipt.json` in a fresh model-validation output directory
 and returns the receipt plus generated `json/workspace.json` to the product owner.
 The product lineage/status records link the actual result; no receipt means pending.
+The November 2 common-owner receipt passed all three official commands below with
+the author model unchanged. [Lineage](validation/FOUNDATION_LINEAGE_20261102.json)
+records the hashes and scope; [workspace.json](architecture/workspace.json) is the
+exact generated JSON. This does not demonstrate a product build or runtime restore.
 
 ```text
 python validate_model.py --java JAVA_EXECUTABLE --jar PINNED_STRUCTURIZR_WAR --model docs/architecture/workspace.dsl --out NEW_VALIDATION_DIRECTORY

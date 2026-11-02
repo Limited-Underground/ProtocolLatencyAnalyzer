@@ -1,0 +1,261 @@
+{
+  "configuration" : { },
+  "description" : "Frozen November 2, 2026: published foundation plus preserved unpublished TCP preview; no product or release acceptance.",
+  "documentation" : { },
+  "id" : 0,
+  "model" : {
+    "people" : [ {
+      "description" : "Chooses local source and data explicitly; authorizes each target measurement.",
+      "id" : "1",
+      "name" : "Operator",
+      "properties" : {
+        "structurizr.dsl.identifier" : "operator"
+      },
+      "relationships" : [ {
+        "description" : "Uses explicit local controls and file dialogs",
+        "destinationId" : "4",
+        "id" : "8",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Selects source, target, timeout, Start/Cancel; views qualified result",
+        "destinationId" : "5",
+        "id" : "11",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "description" : "Local Ethernet inventory, filesystem and sockets. A platform dependency, not a new service.",
+      "documentation" : { },
+      "id" : "2",
+      "name" : "Windows APIs",
+      "properties" : {
+        "structurizr.dsl.identifier" : "windows"
+      },
+      "tags" : "Element,Software System"
+    }, {
+      "description" : "Existing listener selected by the operator. Preview-only TCP IPv4; no Analyzer destination agent.",
+      "documentation" : { },
+      "id" : "3",
+      "name" : "Authorized TCP endpoint",
+      "properties" : {
+        "structurizr.dsl.identifier" : "endpoint"
+      },
+      "tags" : "Element,Software System,TCP Preview"
+    }, {
+      "containers" : [ {
+        "description" : "WPF UI, Core and Infrastructure assemblies share one process. Preview adds explicit Start/Cancel and transient TCP result; source/egress is qualified.",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "Windows desktop application",
+        "properties" : {
+          "structurizr.dsl.identifier" : "desktop"
+        },
+        "relationships" : [ {
+          "description" : "Read-only inventory; preview binds explicit source; no network reconfiguration",
+          "destinationId" : "2",
+          "id" : "12",
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : ".NET APIs"
+        }, {
+          "description" : "Unpublished preview only: one connect, then close; no application payload",
+          "destinationId" : "3",
+          "id" : "13",
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "TCP IPv4"
+        }, {
+          "description" : "Validates schema/identity; transactional save and read-only open",
+          "destinationId" : "6",
+          "id" : "14",
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "Local SQLite"
+        }, {
+          "description" : "Explicit configuration save/load and session metadata export",
+          "destinationId" : "7",
+          "id" : "15",
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "Local filesystem / JSON"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : ".NET 10 / WPF / win-x64"
+      }, {
+        "description" : "Operator-selected schema-v1 .plasession files: metadata and bounded events; no TCP measurement records.",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "Session files",
+        "properties" : {
+          "structurizr.dsl.identifier" : "sessions"
+        },
+        "tags" : "Element,Container,Database",
+        "technology" : "SQLite / Microsoft.Data.Sqlite 10.0.13"
+      }, {
+        "description" : "Explicit JSON configuration save/load and metadata-only export. Neither measurement persistence nor a restorable session backup.",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "Configuration and metadata files",
+        "properties" : {
+          "structurizr.dsl.identifier" : "json"
+        },
+        "tags" : "Element,Container,File Store",
+        "technology" : "Local JSON files"
+      } ],
+      "description" : "Limited Underground portable Windows diagnostics. Published foundation at 3c8367f; TCP is a separately preserved uncommitted overlay on 5abeb7f.",
+      "documentation" : { },
+      "id" : "4",
+      "name" : "Protocol Latency Analyzer",
+      "properties" : {
+        "structurizr.dsl.identifier" : "analyzer"
+      },
+      "relationships" : [ {
+        "description" : "Uses local inventory, storage and socket APIs",
+        "destinationId" : "2",
+        "id" : "9",
+        "sourceId" : "4",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Preview only: one explicitly requested connect; no payload or DNS",
+        "destinationId" : "3",
+        "id" : "10",
+        "sourceId" : "4",
+        "tags" : "Relationship",
+        "technology" : "TCP IPv4"
+      } ],
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Protocol Latency Analyzer",
+  "properties" : {
+    "structurizr.inspection.error" : "6",
+    "structurizr.dsl" : "d29ya3NwYWNlICJQcm90b2NvbCBMYXRlbmN5IEFuYWx5emVyIiAiRnJvemVuIE5vdmVtYmVyIDIsIDIwMjY6IHB1Ymxpc2hlZCBmb3VuZGF0aW9uIHBsdXMgcHJlc2VydmVkIHVucHVibGlzaGVkIFRDUCBwcmV2aWV3OyBubyBwcm9kdWN0IG9yIHJlbGVhc2UgYWNjZXB0YW5jZS4iIHsNCiAgICBtb2RlbCB7DQogICAgICAgIG9wZXJhdG9yID0gcGVyc29uICJPcGVyYXRvciIgIkNob29zZXMgbG9jYWwgc291cmNlIGFuZCBkYXRhIGV4cGxpY2l0bHk7IGF1dGhvcml6ZXMgZWFjaCB0YXJnZXQgbWVhc3VyZW1lbnQuIg0KICAgICAgICB3aW5kb3dzID0gc29mdHdhcmVTeXN0ZW0gIldpbmRvd3MgQVBJcyIgIkxvY2FsIEV0aGVybmV0IGludmVudG9yeSwgZmlsZXN5c3RlbSBhbmQgc29ja2V0cy4gQSBwbGF0Zm9ybSBkZXBlbmRlbmN5LCBub3QgYSBuZXcgc2VydmljZS4iDQogICAgICAgIGVuZHBvaW50ID0gc29mdHdhcmVTeXN0ZW0gIkF1dGhvcml6ZWQgVENQIGVuZHBvaW50IiAiRXhpc3RpbmcgbGlzdGVuZXIgc2VsZWN0ZWQgYnkgdGhlIG9wZXJhdG9yLiBQcmV2aWV3LW9ubHkgVENQIElQdjQ7IG5vIEFuYWx5emVyIGRlc3RpbmF0aW9uIGFnZW50LiIgew0KICAgICAgICAgICAgdGFncyAiVENQIFByZXZpZXciDQogICAgICAgIH0NCiAgICAgICAgYW5hbHl6ZXIgPSBzb2Z0d2FyZVN5c3RlbSAiUHJvdG9jb2wgTGF0ZW5jeSBBbmFseXplciIgIkxpbWl0ZWQgVW5kZXJncm91bmQgcG9ydGFibGUgV2luZG93cyBkaWFnbm9zdGljcy4gUHVibGlzaGVkIGZvdW5kYXRpb24gYXQgM2M4MzY3ZjsgVENQIGlzIGEgc2VwYXJhdGVseSBwcmVzZXJ2ZWQgdW5jb21taXR0ZWQgb3ZlcmxheSBvbiA1YWJlYjdmLiIgew0KICAgICAgICAgICAgZGVza3RvcCA9IGNvbnRhaW5lciAiV2luZG93cyBkZXNrdG9wIGFwcGxpY2F0aW9uIiAiV1BGIFVJLCBDb3JlIGFuZCBJbmZyYXN0cnVjdHVyZSBhc3NlbWJsaWVzIHNoYXJlIG9uZSBwcm9jZXNzLiBQcmV2aWV3IGFkZHMgZXhwbGljaXQgU3RhcnQvQ2FuY2VsIGFuZCB0cmFuc2llbnQgVENQIHJlc3VsdDsgc291cmNlL2VncmVzcyBpcyBxdWFsaWZpZWQuIiAiLk5FVCAxMCAvIFdQRiAvIHdpbi14NjQiDQogICAgICAgICAgICBzZXNzaW9ucyA9IGNvbnRhaW5lciAiU2Vzc2lvbiBmaWxlcyIgIk9wZXJhdG9yLXNlbGVjdGVkIHNjaGVtYS12MSAucGxhc2Vzc2lvbiBmaWxlczogbWV0YWRhdGEgYW5kIGJvdW5kZWQgZXZlbnRzOyBubyBUQ1AgbWVhc3VyZW1lbnQgcmVjb3Jkcy4iICJTUUxpdGUgLyBNaWNyb3NvZnQuRGF0YS5TcWxpdGUgMTAuMC4xMyIgew0KICAgICAgICAgICAgICAgIHRhZ3MgIkRhdGFiYXNlIg0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAganNvbiA9IGNvbnRhaW5lciAiQ29uZmlndXJhdGlvbiBhbmQgbWV0YWRhdGEgZmlsZXMiICJFeHBsaWNpdCBKU09OIGNvbmZpZ3VyYXRpb24gc2F2ZS9sb2FkIGFuZCBtZXRhZGF0YS1vbmx5IGV4cG9ydC4gTmVpdGhlciBtZWFzdXJlbWVudCBwZXJzaXN0ZW5jZSBub3IgYSByZXN0b3JhYmxlIHNlc3Npb24gYmFja3VwLiIgIkxvY2FsIEpTT04gZmlsZXMiIHsNCiAgICAgICAgICAgICAgICB0YWdzICJGaWxlIFN0b3JlIg0KICAgICAgICAgICAgfQ0KICAgICAgICB9DQogICAgICAgIG9wZXJhdG9yIC0+IGFuYWx5emVyICJVc2VzIGV4cGxpY2l0IGxvY2FsIGNvbnRyb2xzIGFuZCBmaWxlIGRpYWxvZ3MiDQogICAgICAgIGFuYWx5emVyIC0+IHdpbmRvd3MgIlVzZXMgbG9jYWwgaW52ZW50b3J5LCBzdG9yYWdlIGFuZCBzb2NrZXQgQVBJcyINCiAgICAgICAgYW5hbHl6ZXIgLT4gZW5kcG9pbnQgIlByZXZpZXcgb25seTogb25lIGV4cGxpY2l0bHkgcmVxdWVzdGVkIGNvbm5lY3Q7IG5vIHBheWxvYWQgb3IgRE5TIiAiVENQIElQdjQiDQogICAgICAgIG9wZXJhdG9yIC0+IGRlc2t0b3AgIlNlbGVjdHMgc291cmNlLCB0YXJnZXQsIHRpbWVvdXQsIFN0YXJ0L0NhbmNlbDsgdmlld3MgcXVhbGlmaWVkIHJlc3VsdCINCiAgICAgICAgZGVza3RvcCAtPiB3aW5kb3dzICJSZWFkLW9ubHkgaW52ZW50b3J5OyBwcmV2aWV3IGJpbmRzIGV4cGxpY2l0IHNvdXJjZTsgbm8gbmV0d29yayByZWNvbmZpZ3VyYXRpb24iICIuTkVUIEFQSXMiDQogICAgICAgIGRlc2t0b3AgLT4gZW5kcG9pbnQgIlVucHVibGlzaGVkIHByZXZpZXcgb25seTogb25lIGNvbm5lY3QsIHRoZW4gY2xvc2U7IG5vIGFwcGxpY2F0aW9uIHBheWxvYWQiICJUQ1AgSVB2NCINCiAgICAgICAgZGVza3RvcCAtPiBzZXNzaW9ucyAiVmFsaWRhdGVzIHNjaGVtYS9pZGVudGl0eTsgdHJhbnNhY3Rpb25hbCBzYXZlIGFuZCByZWFkLW9ubHkgb3BlbiIgIkxvY2FsIFNRTGl0ZSINCiAgICAgICAgZGVza3RvcCAtPiBqc29uICJFeHBsaWNpdCBjb25maWd1cmF0aW9uIHNhdmUvbG9hZCBhbmQgc2Vzc2lvbiBtZXRhZGF0YSBleHBvcnQiICJMb2NhbCBmaWxlc3lzdGVtIC8gSlNPTiINCiAgICB9DQogICAgdmlld3Mgew0KICAgICAgICBzeXN0ZW1Db250ZXh0IGFuYWx5emVyICJTeXN0ZW1Db250ZXh0IiAiQ29udGV4dDogZW5kcG9pbnQgcmVsYXRpb25zaGlwIGV4aXN0cyBvbmx5IGluIHRoZSBwcmVzZXJ2ZWQgVENQIG92ZXJsYXksIG5vdCBwdWJsaXNoZWQgbWFpbi4gTm8gdGFyZ2V0IHRlc3Qgb3IgcGh5c2ljYWwtZWdyZXNzIGNsYWltLiIgew0KICAgICAgICAgICAgaW5jbHVkZSBvcGVyYXRvcg0KICAgICAgICAgICAgaW5jbHVkZSB3aW5kb3dzDQogICAgICAgICAgICBpbmNsdWRlIGVuZHBvaW50DQogICAgICAgICAgICBpbmNsdWRlIGFuYWx5emVyDQogICAgICAgICAgICBhdXRvTGF5b3V0IGxyDQogICAgICAgIH0NCiAgICAgICAgY29udGFpbmVyIGFuYWx5emVyICJDb250YWluZXJzIiAiT25lIGRlc2t0b3AgcnVudGltZSB3aXRoIHR3byBsb2dpY2FsIGxvY2FsIGZpbGUgc3RvcmVzLiBDb3JlL0luZnJhc3RydWN0dXJlIGFyZSBpbnRlcm5hbCBhc3NlbWJsaWVzLCBub3QgaW5kZXBlbmRlbnQgY29udGFpbmVycy4iIHsNCiAgICAgICAgICAgIGluY2x1ZGUgb3BlcmF0b3INCiAgICAgICAgICAgIGluY2x1ZGUgd2luZG93cw0KICAgICAgICAgICAgaW5jbHVkZSBlbmRwb2ludA0KICAgICAgICAgICAgaW5jbHVkZSBkZXNrdG9wDQogICAgICAgICAgICBpbmNsdWRlIHNlc3Npb25zDQogICAgICAgICAgICBpbmNsdWRlIGpzb24NCiAgICAgICAgICAgIGF1dG9MYXlvdXQgbHINCiAgICAgICAgfQ0KICAgICAgICBzdHlsZXMgew0KICAgICAgICAgICAgZWxlbWVudCAiUGVyc29uIiB7DQogICAgICAgICAgICAgICAgc2hhcGUgUGVyc29uDQogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMjM0MDVhDQogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZg0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAgZWxlbWVudCAiU29mdHdhcmUgU3lzdGVtIiB7DQogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNDg2NTc5DQogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZg0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAgZWxlbWVudCAiQ29udGFpbmVyIiB7DQogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjNDE2ZjhhDQogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZg0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAgZWxlbWVudCAiRGF0YWJhc2UiIHsNCiAgICAgICAgICAgICAgICBzaGFwZSBDeWxpbmRlcg0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAgZWxlbWVudCAiRmlsZSBTdG9yZSIgew0KICAgICAgICAgICAgICAgIHNoYXBlIEZvbGRlcg0KICAgICAgICAgICAgfQ0KICAgICAgICAgICAgZWxlbWVudCAiVENQIFByZXZpZXciIHsNCiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM3YzViMmUNCiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmDQogICAgICAgICAgICB9DQogICAgICAgIH0NCiAgICB9DQp9",
+    "structurizr.inspection.info" : "0",
+    "structurizr.inspection.ignore" : "0",
+    "structurizr.inspection.warning" : "0"
+  },
+  "views" : {
+    "configuration" : {
+      "styles" : {
+        "elements" : [ {
+          "background" : "#416f8a",
+          "color" : "#ffffff",
+          "tag" : "Container"
+        }, {
+          "shape" : "Cylinder",
+          "tag" : "Database"
+        }, {
+          "shape" : "Folder",
+          "tag" : "File Store"
+        }, {
+          "background" : "#23405a",
+          "color" : "#ffffff",
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "background" : "#486579",
+          "color" : "#ffffff",
+          "tag" : "Software System"
+        }, {
+          "background" : "#7c5b2e",
+          "color" : "#ffffff",
+          "tag" : "TCP Preview"
+        } ]
+      },
+      "terminology" : { }
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "description" : "One desktop runtime with two logical local file stores. Core/Infrastructure are internal assemblies, not independent containers.",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "name" : "Container View: Protocol Latency Analyzer",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "11"
+      }, {
+        "id" : "12"
+      }, {
+        "id" : "13"
+      }, {
+        "id" : "14"
+      }, {
+        "id" : "15"
+      } ],
+      "softwareSystemId" : "4"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "edgeSeparation" : 50,
+        "nodeSeparation" : 50,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 100,
+        "vertices" : true
+      },
+      "description" : "Context: endpoint relationship exists only in the preserved TCP overlay, not published main. No target test or physical-egress claim.",
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "SystemContext",
+      "name" : "System Context View: Protocol Latency Analyzer",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "10"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "4"
+    } ]
+  }
+}

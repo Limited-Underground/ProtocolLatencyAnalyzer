@@ -200,5 +200,31 @@
     "sourceBuild": "Historical Release build 0 warnings/errors; independent clean rebuild not performed in this foundation task",
     "byteEquality": "Not established; selected binary equality does not establish whole package determinism",
     "runtimeData": "Historical synthetic storage/UI and loopback checks only; no new runtime/data restore or Ethernet acceptance"
+  },
+  "modelValidation": {
+    "date": "2026-11-02",
+    "result": "PASS",
+    "owner": "common handbook tooling owner; separate from product author",
+    "tool": "official Structurizr2026.09.19",
+    "warSha256": "ac1a2806e246364b88261a542a36ca7f3006ef48e5de68830afa8672f58690f1",
+    "java": "Studio JBR OpenJDK25.0.4 (Java21+ runtime)",
+    "modelSha256": "fdbd11057163e3920119b90d7e78ccedd90bc65736467bde2d5c86548de3e743",
+    "jsonSha256": "ecdedae3575a75c76d9cffe2f925f70c76ebb9601ee70a094b52f1403917c7b7",
+    "commands": [
+      {
+        "action": "validate",
+        "exitCode": 0
+      },
+      {
+        "action": "export-json",
+        "exitCode": 0
+      },
+      {
+        "action": "export-static",
+        "exitCode": 0
+      }
+    ],
+    "authorModelUnchanged": true,
+    "scope": "Official syntax validation and JSON/static export; not architecture truth, product build/runtime or release acceptance"
   }
 }
