@@ -1,5 +1,19 @@
 # Protocol Latency Analyzer
 
+**Product development frozen indefinitely — November 2, 2026.** Start with
+[the current handoff and working rules](CONTRIBUTING.md),
+[architecture and measurement boundaries](docs/ARCHITECTURE.md), and
+[pinned build, packaging and recovery](docs/BUILD_AND_RECOVERY.md).
+The public source is the desktop foundation. The validated TCP preview remains
+a separately preserved, unpublished source overlay and immutable package;
+this documentation does not integrate it into `main` or authorize tests/releases.
+[Lineage](docs/validation/FOUNDATION_LINEAGE_20261102.json) and
+[partial Server 2019 results](docs/validation/TCP_PREVIEW_SERVER2019_20261101.json)
+distinguish the actual candidates and remaining gates.
+GitHub [Project #2](https://github.com/orgs/Limited-Underground/projects/2)
+owns live task status. The older foundation usage/evidence below is retained;
+execution requires current authority and the chosen source profile.
+
 **By Limited Underground**
 
 Windows-first portable network diagnostics application, with a reusable core intended for a future Linux application. Phase 1 provides the desktop foundation: dashboard shell, read-only Ethernet inventory, capability reporting, configuration, local sessions, and logging. Protocol transmissions and packet capture are not implemented in this phase.
