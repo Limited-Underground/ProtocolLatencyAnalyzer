@@ -213,7 +213,10 @@ The helper and adjacent lock are a declared external documentation dependency:
 [Engineering-Recovery `handbook/validate_model.py` at `c168889`](https://github.com/Limited-Underground/Engineering-Recovery/blob/c1688896d27f6d12eb24971faad50b22c68182f6/handbook/validate_model.py)
 and [its Structurizr lock](https://github.com/Limited-Underground/Engineering-Recovery/blob/c1688896d27f6d12eb24971faad50b22c68182f6/handbook/structurizr.lock.json).
 That existing repository is private; retrieve it only with approved organization
-access. It is not bundled in this public product clone. The common handbook owner
+access. The named helper snapshot is preserved in the common tooling candidate;
+remote retrieval of that particular commit is not yet verified. Obtain an approved
+copy from the common tooling owner or use the standalone official commands below.
+It is not bundled in this public product clone. The common handbook owner
 retains command logs and `receipt.json` in a fresh model-validation output directory
 and returns the receipt plus generated `json/workspace.json` to the product owner.
 The product lineage/status records link the actual result; no receipt means pending.
