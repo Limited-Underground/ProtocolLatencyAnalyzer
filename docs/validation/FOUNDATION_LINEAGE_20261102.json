@@ -1,0 +1,230 @@
+{
+  "recordDate": "2026-11-02",
+  "scope": "Frozen documentation/preservation checkpoint; no product change or runtime execution",
+  "publicRepository": "Limited-Underground/ProtocolLatencyAnalyzer",
+  "documentationBase": "3c8367f3d4a6780061046c551df0d4a6f40e8447",
+  "implementationBase": "5abeb7f67cb46a53263acdce25f86661b91213f0",
+  "baseDifference": "docs/PROGRESS_LOG.md only; application source unchanged",
+  "tcpCandidate": "uncommitted overlay, preserved separately; not present on public main",
+  "package": {
+    "name": "ProtocolLatencyAnalyzer-0.1.0-win-x64-tcp-preview-20261029-r2.zip",
+    "bytes": 66743668,
+    "sha256": "66bb169b749de0ee3f70339a0798c7edea4f49c2d9035b86a01c06d7ceea6c13",
+    "entries": 439,
+    "kind": "unpublished self-contained win-x64 preview; not a release"
+  },
+  "historicalPatches": {
+    "headless": "3ffd32e4e118964665bfedd81febde09f52614e1d5e449a94510680e10f1c595",
+    "desktop": "f73ca9b6bded6cbcfe1ca5974bb242bae82d25b5469acde59082e93826afa3fb"
+  },
+  "sourceFiles": [
+    {
+      "path": "scripts/Test-PublishPreflight.ps1",
+      "bytes": 3211,
+      "sha256": "6f99bcb112658ea49f68cdc82837d809303cb1b2a2822d76f8f7d1d8ce15828b"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Core/TcpConnectModels.cs",
+      "bytes": 1885,
+      "sha256": "9d6f62cd42041c5ddb1cf89ee351e095cbc062cf22995c3563ddb9eaefe471d0"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/TcpDesktopTests.cs",
+      "bytes": 21666,
+      "sha256": "de1157c4643fc2d531643cda0ed81bfa56857739ce5171f710026d839390a619"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/SocketTcpConnectTransport.cs",
+      "bytes": 2923,
+      "sha256": "0b459d5a1b3fd094f48abd0f7702fedf75540faa977db762152bdbf1c4f587f8"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/TcpConnectProbe.cs",
+      "bytes": 11433,
+      "sha256": "dc97e5f5a7dc4353c33464ae1e85e3afb49e91608387d4b72e149f8c2cba925d"
+    },
+    {
+      "path": "tests/ProtocolLatencyAnalyzer.Tests/TcpConnectTests.cs",
+      "bytes": 29629,
+      "sha256": "31305bf3e2e7b8f6141d3c44ccabaec4c3897d59448d7e64c8475b8f32261c4a"
+    },
+    {
+      "path": "Directory.Build.props",
+      "bytes": 780,
+      "sha256": "001b9556e6962f6194418e144e592d0376359ff96b1b76d60bbdb57ca6584f2a"
+    },
+    {
+      "path": "NuGet.config",
+      "bytes": 307,
+      "sha256": "63040c410ac76f9ea10745d2449c80ef84b111322c279eb5708acafd69dac4e0"
+    },
+    {
+      "path": "ProtocolLatencyAnalyzer.sln",
+      "bytes": 5925,
+      "sha256": "956918b0badd84a3aa784a27e2b057077fda4c7454537b4e329d81e65f2ab559"
+    },
+    {
+      "path": "global.json",
+      "bytes": 109,
+      "sha256": "970a9eb7d33568e3702f8090a019a773355fb63c0f6eb41add69f6ec890c19ba"
+    },
+    {
+      "path": "scripts/Build.ps1",
+      "bytes": 658,
+      "sha256": "e08845335560a1b2f96e49960a6171ffa57d0ad981197b38666152e8268e3c3b"
+    },
+    {
+      "path": "scripts/Publish.ps1",
+      "bytes": 2746,
+      "sha256": "bde0fb6a810efd95b7e84d3ccdf997de6fe5e2d9747e8cafc197d5862dfbd858"
+    },
+    {
+      "path": "scripts/Test.ps1",
+      "bytes": 487,
+      "sha256": "f16527b80862f748f5fd571fee9e0bd746bd58f85489d2961592cea3a3bdef82"
+    },
+    {
+      "path": "scripts/Verify-Package.ps1",
+      "bytes": 9118,
+      "sha256": "b39564f780d8ec054aac04749bf9755804c4464858ced6521909edbcf3dba238"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Core/Models.cs",
+      "bytes": 2938,
+      "sha256": "e21e027e224e28f852b4ff02ab66f39996c564793837df120de9aaa48acafd66"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Core/ProtocolLatencyAnalyzer.Core.csproj",
+      "bytes": 187,
+      "sha256": "5f27cc3117b11fb828a7877e49768ea62e5af11e8f8c28ef299eda07aad5b3e5"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Core/packages.lock.json",
+      "bytes": 61,
+      "sha256": "a29c6aa8cfb81874ff8bb78dc369d7416f28c9b8cc47e99592bfc019b20c41eb"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Core/packages.win-x64.lock.json",
+      "bytes": 88,
+      "sha256": "c30b149eb0b6c271aabe8d79d7b0318ba25f0bbd2ebf6a08faa3b67056bce9b3"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/App.xaml",
+      "bytes": 2120,
+      "sha256": "f3aaa5b3765ee288104308079210a3b3e9be19fcae0195ffa27b4ee0c65ebfcd"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/App.xaml.cs",
+      "bytes": 14098,
+      "sha256": "d0d5d1665c21267ff8d1653292816a4df1936a64c1afdbae83b0c3e80e2449e4"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/DashboardViewModel.cs",
+      "bytes": 12617,
+      "sha256": "73cc371338b1078e7ad1c12a327e550bf9cd8a78a8c1bd3db364700e75e904c2"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/MainWindow.xaml",
+      "bytes": 14253,
+      "sha256": "f34d287b5877671862fc63a8c299b4fc056cec6b6db7316a346d89ae67e77eba"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/MainWindow.xaml.cs",
+      "bytes": 24432,
+      "sha256": "d69272c682b0afeb3e29bbb277b14e7dd02779996887955f07b2b864a1c9133e"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/ProtocolLatencyAnalyzer.Desktop.csproj",
+      "bytes": 587,
+      "sha256": "05f1a210bd9f2815f8134e06b6473f6a0f92f56b3f8af0b486aa5421ed456e81"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/packages.lock.json",
+      "bytes": 2175,
+      "sha256": "74d7201c57b22e18fe5f5186e062a1835c97446b6863bf1e5e396473479c1667"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Desktop/packages.win-x64.lock.json",
+      "bytes": 2438,
+      "sha256": "c84499d23c3cf3510ca7ce77eb3ec5c2463bb126787b4b3d56a394f8e67d0689"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/ConfigurationStore.cs",
+      "bytes": 1903,
+      "sha256": "48152f39ba2e1b4dccb6efe01cc154dc4037ec5ef2fec85ba59649935a4db213"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/EthernetInterfaceProvider.cs",
+      "bytes": 5301,
+      "sha256": "4b36b39f2c006daa5e72d8f8d6441bff74704c579fcf31d1ff295f87e2fd8af8"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/ProtocolLatencyAnalyzer.Infrastructure.csproj",
+      "bytes": 442,
+      "sha256": "b8797606909e9f05e39ac1acec156931f73a8fd256d765d7b4dad38199e9fbbe"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/SessionRepository.cs",
+      "bytes": 8022,
+      "sha256": "1785dde74b35aec67ce8330970b82ad51ceaa81dffb77198c017ccb9555fe50a"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/packages.lock.json",
+      "bytes": 1970,
+      "sha256": "dba856a38d079d13c39493c4410bda268b8e82321b577c418f1ea8a6c81a73e3"
+    },
+    {
+      "path": "src/ProtocolLatencyAnalyzer.Infrastructure/packages.win-x64.lock.json",
+      "bytes": 2222,
+      "sha256": "d9dfe0d9533542900a203f725cf4845824e5e823cdc2f75786f28d0f62a83ab3"
+    },
+    {
+      "path": "tests/ProtocolLatencyAnalyzer.Tests/Program.cs",
+      "bytes": 15067,
+      "sha256": "560df9c02235e4700cd63e750d26f68933e830cbac22d1ae2ddf0c16da74aedc"
+    },
+    {
+      "path": "tests/ProtocolLatencyAnalyzer.Tests/ProtocolLatencyAnalyzer.Tests.csproj",
+      "bytes": 363,
+      "sha256": "f192b9cbd926d33ecda0fe93ba852fa005370c5ec2ffaf7c7a5e0605b8fe90bb"
+    },
+    {
+      "path": "tests/ProtocolLatencyAnalyzer.Tests/packages.lock.json",
+      "bytes": 2164,
+      "sha256": "276142e48607a28bac8dd32df7eb71edc4052c5e5d6b865e1994bb0beba5a6ef"
+    }
+  ],
+  "recoveryClaims": {
+    "source": "Remote public base cloned; current TCP overlay separately preserved on verified internal backup disk; not remotely published",
+    "exactBinary": "Local accepted ZIP copied and SHA-256 verified; no remote distribution claimed",
+    "sourceBuild": "Historical Release build 0 warnings/errors; independent clean rebuild not performed in this foundation task",
+    "byteEquality": "Not established; selected binary equality does not establish whole package determinism",
+    "runtimeData": "Historical synthetic storage/UI and loopback checks only; no new runtime/data restore or Ethernet acceptance"
+  },
+  "modelValidation": {
+    "date": "2026-11-02",
+    "result": "PASS",
+    "owner": "common handbook tooling owner; separate from product author",
+    "tool": "official Structurizr2026.09.19",
+    "warSha256": "ac1a2806e246364b88261a542a36ca7f3006ef48e5de68830afa8672f58690f1",
+    "java": "Studio JBR OpenJDK25.0.4 (Java21+ runtime)",
+    "modelSha256": "fdbd11057163e3920119b90d7e78ccedd90bc65736467bde2d5c86548de3e743",
+    "jsonSha256": "ecdedae3575a75c76d9cffe2f925f70c76ebb9601ee70a094b52f1403917c7b7",
+    "commands": [
+      {
+        "action": "validate",
+        "exitCode": 0
+      },
+      {
+        "action": "export-json",
+        "exitCode": 0
+      },
+      {
+        "action": "export-static",
+        "exitCode": 0
+      }
+    ],
+    "authorModelUnchanged": true,
+    "scope": "Official syntax validation and JSON/static export; not architecture truth, product build/runtime or release acceptance"
+  }
+}

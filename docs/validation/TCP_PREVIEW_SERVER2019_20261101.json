@@ -1,0 +1,72 @@
+{
+  "Result": "PARTIALLY QUALIFIED — SPECIFIC GAPS",
+  "Date": "2026-11-01",
+  "Package": "ProtocolLatencyAnalyzer-0.1.0-win-x64-tcp-preview-20261029-r2.zip",
+  "SHA256": "66bb169b749de0ee3f70339a0798c7edea4f49c2d9035b86a01c06d7ceea6c13",
+  "OS": "Server 2019 Standard Evaluation Desktop Experience 17763.3650",
+  "Network": "Disconnected; real traffic only assigned guest-loopback endpoint",
+  "AcceptedFileHashesMatched": 439,
+  "Gates": [
+    {
+      "Name": "model-layout",
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Seconds": 2.4713985
+    },
+    {
+      "Name": "storage",
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Seconds": 0.346593
+    },
+    {
+      "Name": "render",
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Seconds": 0.8366798
+    },
+    {
+      "Name": "startup",
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Seconds": 0.6652635
+    },
+    {
+      "Name": "tcp-ui",
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Seconds": 0.8359742
+    }
+  ],
+  "SyntheticWPFAssertions": 86,
+  "DeterministicTcpChecks": 186,
+  "RealLoopbackAssertions": 8,
+  "RefusalObservation": "ConnectionRefused, unavailable connect latency, IsBusy false",
+  "StartupCycles": [
+    {
+      "Cycle": 1,
+      "ExitCode": 0,
+      "Seconds": 0.7051599,
+      "SampledPeakWorkingSetBytes": 78422016,
+      "SampledCPUTimeMs": 703.125,
+      "DispatcherAndCleanClosure": true
+    },
+    {
+      "Cycle": 2,
+      "ExitCode": 0,
+      "Seconds": 0.6366961999999999,
+      "SampledPeakWorkingSetBytes": 75771904,
+      "SampledCPUTimeMs": 656.25,
+      "DispatcherAndCleanClosure": true
+    }
+  ],
+  "LongPaths": "Managed create PASS all five tested lengths; repository240PASS,259/260/266/280SQLite14; exact stage/threshold unproved",
+  "Gaps": [
+    "Non-admin native interactive workflows",
+    "Operator acceptance",
+    "Physical Ethernet/source qualification",
+    "Realistic-network timeout/in-flight cancellation",
+    "Server2022/2025"
+  ],
+  "PublicRelease": false
+}
