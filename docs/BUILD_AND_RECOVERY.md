@@ -180,9 +180,14 @@ When a separately authorized isolated recovery slot is available:
 |---|---|---|
 | Source and history retrievable | Fresh public HTTPS clone of `3c8367f`; separate manifest-verified TCP source/Git checkpoint | Public base demonstrated; overlay local backup only, not public remote recovery |
 | Exact accepted binary retrievable | ZIP copied to new checkpoint and SHA-256 matched | Local independent-disk retrieval verified; no remote artifact store or release |
-| Source rebuild succeeds | Prior warning-free Release build retained | No new clean build under this task; heavy slot held elsewhere |
-| Rebuild byte equality/explained differences | Prior selected-binary comparison is retained | Whole build/ZIP reproducibility not established |
+| Source rebuild succeeds | November 2 locked publish from the sealed 67-file TCP snapshot with fresh package caches | Qualified result on the recorded host with declared installed SDK and packs. Clean-machine and hermetic toolchain recovery remain open. |
+| Rebuild byte equality/explained differences | 431 of 439 ZIP member contents match the accepted preview. Eight differ. | The archive differs. Full binary-difference causality and IL equivalence remain open. |
 | Runtime/data restoration demonstrated | Historical synthetic SQLite/configuration, WPF controls and loopback evidence | No new independent restore; no physical Ethernet or full target-OS acceptance |
+
+Independent review `pla-cold-reconstruction-001` returned a qualified pass for the
+isolated source publish and package comparison. Its receipt SHA-256 is
+`a4b323ee8c1ed910224210ccefd685731927e9b789e27fbb5d57fc1005397770`.
+The runtime evidence from this reconstruction consists of packaged metadata.
 
 ## Document ownership map
 

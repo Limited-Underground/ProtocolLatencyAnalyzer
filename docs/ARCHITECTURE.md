@@ -203,12 +203,12 @@ are not updated to imply the TCP overlay is merged. The reading-path and
 
 | Scenario | Retained demonstration | Remaining boundary |
 |---|---|---|
-| Foundation model/storage/inventory safety | 41 foundation regressions; recorded Windows host workflows | No new clean reconstruction in this foundation task |
+| Foundation model/storage/inventory safety | 41 foundation regressions and recorded Windows host workflows | Evidence covers the tested foundation profile and host |
 | Single TCP ownership, exact input/source, timing/errors/races | 186 deterministic checks in accepted implementation; eight opt-in loopback checks | Injected behavior/loopback do not qualify physical egress |
 | UI Start/Cancel, unavailable failure, stale context/close, storage unchanged | 86 view-model/actual WPF-control checks with synthetic inventory/executor | No current operator or actual Ethernet acceptance |
 | Package integrity and offline OS execution | Five Server 2019 gates; all 439 accepted files hash-matched; two repeated startup/clean-exit cycles | Partial Server qualification, not non-admin complete workflows or Server 2022/2025 |
 | Existing output preservation | Seven publish-preflight cases and five verifier/receipt guards | No concurrent-publisher atomicity guarantee |
-| Recoverability | Separate source/Git/package checkpoint with membership and SHA verification | See five independent claims in recovery guide; no byte-identical/remote TCP recovery claim |
+| Recoverability | Separate source/Git/package checkpoint and qualified current-host publish from sealed TCP inputs | [Recovery evidence](BUILD_AND_RECOVERY.md#five-independent-recovery-claims) distinguishes source rebuild, package equality and runtime/data restoration |
 
 The [November 1 sanitized result](validation/TCP_PREVIEW_SERVER2019_20261101.json)
 records exact gates and limits. Historical counts are reused, not rerun or added
